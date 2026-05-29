@@ -688,15 +688,11 @@
 
     @media (max-width: 900px) {
       .services-grid { grid-template-columns: repeat(2, 1fr); }
-      .service-card:nth-child(1),
-      .service-card:nth-child(2),
-      .service-card:nth-child(3),
-      .service-card:nth-child(4),
-      .service-card:nth-child(5) { grid-column: span 1; }
+      .service-card { grid-column: span 1; }
     }
     @media (max-width: 560px) {
       .services-grid { grid-template-columns: 1fr; }
-      .service-card  { aspect-ratio: 3/2; }
+      .service-card  { grid-column: 1 / -1; aspect-ratio: 3/2; }
     }
 
     /* ── CONTACT (COMBINED) ───────────────────────────────── */
@@ -1704,7 +1700,7 @@
         revealObs.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  }, { threshold: 0.05, rootMargin: '0px 0px 0px 0px' });
   revealEls.forEach(el => revealObs.observe(el));
 
   /* FAQ accordion */
