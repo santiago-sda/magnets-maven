@@ -1,0 +1,1948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Magnets Maven — Biomagnetic Therapy by Stephanie Bassaler</title>
+  <meta name="description" content="Personalized biomagnetic therapy sessions for adults, children, and pets — in-person in Coral Gables and virtually. Book with Stephanie Bassaler at Magnets Maven." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── RESET & ROOT ─────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:        #F5EEE3;   /* warm linen — matches photo background */
+      --cream-dark:   #EAE0D0;
+      --beige:        #D4C4B0;   /* linen mid-tone */
+      --sage:         #7A8C68;   /* olive sage — from eucalyptus leaves */
+      --sage-light:   #A9BA95;
+      --burgundy:     #4f6d73;
+      --burgundy-dark:#3a5258;
+      --charcoal:     #1e3538;   /* deep dark teal — on-brand dark sections */
+      --black:        #131f20;
+      --warm-white:   #FDFAF2;
+      --serif:        'Cormorant Garamond', Georgia, serif;
+      --sans:         'Jost', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--cream);
+      color: var(--charcoal);
+      font-size: 16px;
+      line-height: 1.75;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 { font-family: var(--serif); font-weight: 400; line-height: 1.2; }
+    h1 { font-size: clamp(2rem, 4.2vw, 4rem); }
+    h2 { font-size: clamp(2rem, 4vw, 3.4rem); }
+    h3 { font-size: clamp(1.4rem, 2.5vw, 2rem); }
+    h4 { font-size: clamp(1.1rem, 1.8vw, 1.5rem); }
+    p  { font-weight: 300; letter-spacing: 0.02em; }
+
+    /* ── UTILITIES ────────────────────────────────────────── */
+    .container        { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+    .container-narrow { max-width: 720px;  margin: 0 auto; padding: 0 2rem; }
+
+    .section-label {
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--sage);
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    .divider {
+      width: 56px; height: 1px;
+      background: var(--sage);
+      margin: 0 auto 2rem;
+    }
+    .divider-left { margin-left: 0; }
+
+    /* Fade-in on scroll */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── NAVIGATION ───────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 2.5rem;
+      transition: background 0.5s ease, box-shadow 0.5s ease;
+    }
+    nav.scrolled {
+      background: rgba(245, 238, 227, 0.96);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 1px 24px rgba(24,19,14,0.08);
+    }
+
+    .nav-logo {
+      display: flex; align-items: center;
+      text-decoration: none; line-height: 1;
+    }
+    .nav-logo img {
+      height: 95px; width: auto;
+      transition: opacity 0.4s ease;
+      position: absolute;
+    }
+    .logo-light { opacity: 1; }
+    .logo-dark  { opacity: 0; }
+    nav.scrolled .logo-light { opacity: 0; }
+    nav.scrolled .logo-dark  { opacity: 1; }
+    .nav-logo-wrap {
+      position: relative; height: 95px; width: 300px;
+    }
+
+    .nav-links {
+      display: flex; align-items: center; gap: 2.4rem; list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.72rem; font-weight: 400; letter-spacing: 0.18em;
+      text-transform: uppercase; color: rgba(255,255,255,0.88);
+      text-decoration: none; transition: color 0.3s;
+    }
+    nav.scrolled .nav-links a { color: #4f6d73; }
+    .nav-links a:hover { color: var(--sage-light); }
+    nav.scrolled .nav-links a:hover { color: var(--burgundy); }
+
+    .nav-cta {
+      border: 1px solid rgba(255,255,255,0.55) !important;
+      padding: 0.5rem 1.3rem;
+      border-radius: 2px;
+      color: #fff !important;
+      transition: background 0.3s, color 0.3s !important;
+    }
+    .nav-cta:hover { background: #fff !important; color: var(--burgundy) !important; }
+    nav.scrolled .nav-cta { border-color: var(--burgundy) !important; color: var(--burgundy) !important; }
+    nav.scrolled .nav-cta:hover { background: var(--burgundy) !important; color: #fff !important; }
+
+    /* Hamburger */
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; padding: 4px; z-index: 300;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 1.5px;
+      background: #fff; transition: all 0.35s;
+    }
+    nav.scrolled .hamburger span { background: var(--charcoal); }
+    nav.menu-open .hamburger span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); background: var(--charcoal); }
+    nav.menu-open .hamburger span:nth-child(2) { opacity: 0; }
+    nav.menu-open .hamburger span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); background: var(--charcoal); }
+
+    /* ── HERO ─────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      height: 100vh; min-height: 680px;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+
+    /* Video background */
+    .hero-video {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+      z-index: 0;
+    }
+
+    /* Gradient overlay on top of video */
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(to bottom,
+        rgba(24,19,14,0.30) 0%,
+        rgba(20,15,10,0.50) 55%,
+        rgba(16,10,6,0.72) 100%);
+    }
+
+    .hero-content {
+      position: relative; z-index: 2;
+      text-align: center; padding: 2rem;
+      max-width: 1100px;
+    }
+
+    .hero-eyebrow {
+      display: block;
+      font-size: 0.7rem; letter-spacing: 0.32em; text-transform: uppercase;
+      color: var(--sage-light); margin-bottom: 1.6rem;
+      opacity: 0; animation: fadeUp 1s ease 0.3s forwards;
+    }
+
+    .hero h1 {
+      color: var(--warm-white); font-style: italic;
+      margin-bottom: 1.4rem;
+      opacity: 0; animation: fadeUp 1s ease 0.65s forwards;
+    }
+
+    .hero-sub {
+      font-size: 1.05rem; color: rgba(253,250,246,0.82);
+      max-width: 480px; margin: 0 auto 2.8rem;
+      opacity: 0; animation: fadeUp 1s ease 1s forwards;
+    }
+
+    .hero-buttons {
+      display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp 1s ease 1.3s forwards;
+    }
+
+    .btn-primary {
+      background: var(--burgundy); color: #fff;
+      padding: 0.95rem 2.2rem;
+      font-family: var(--sans); font-size: 0.75rem;
+      font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase;
+      border: none; border-radius: 2px; cursor: pointer;
+      text-decoration: none; display: inline-block;
+      transition: background 0.3s, box-shadow 0.3s, transform 0.3s;
+    }
+    .btn-primary:hover {
+      background: var(--burgundy-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(58,82,88,0.35);
+    }
+
+    .btn-ghost {
+      background: transparent; color: #fff;
+      padding: 0.95rem 2.2rem;
+      font-family: var(--sans); font-size: 0.75rem;
+      font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase;
+      border: 1px solid rgba(255,255,255,0.55); border-radius: 2px;
+      text-decoration: none; display: inline-block;
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,0.12); border-color: #fff; }
+
+    /* Scroll indicator */
+    .hero-scroll {
+      position: absolute; bottom: 2.4rem; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+      color: rgba(255,255,255,0.45); font-size: 0.65rem; letter-spacing: 0.25em;
+      text-transform: uppercase;
+      opacity: 0; animation: fadeUp 1s ease 1.8s forwards;
+    }
+    .scroll-bar {
+      width: 1px; height: 44px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent);
+      animation: scrollPulse 2.2s ease infinite;
+      transform-origin: top;
+    }
+    @keyframes scrollPulse {
+      0%   { transform: scaleY(0); transform-origin: top; }
+      50%  { transform: scaleY(1); transform-origin: top; }
+      51%  { transform: scaleY(1); transform-origin: bottom; }
+      100% { transform: scaleY(0); transform-origin: bottom; }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── INTRO ────────────────────────────────────────────── */
+    .intro {
+      background: var(--warm-white);
+      padding: 7rem 2rem;
+      text-align: center;
+    }
+    .intro h2 { color: var(--burgundy); font-style: italic; margin-bottom: 1.4rem; }
+    .intro p {
+      font-size: 1.05rem; color: #444; line-height: 1.95;
+      max-width: 660px; margin: 0 auto 1.3rem;
+    }
+
+    .pillars {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 2rem; margin-top: 4.5rem;
+      max-width: 600px; margin-left: auto; margin-right: auto;
+    }
+    .pillar {
+      display: flex; flex-direction: column; align-items: center;
+      gap: 0.9rem;
+    }
+    .pillar-ring {
+      width: 52px; height: 52px;
+      border: 1px solid var(--beige); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--burgundy);
+    }
+    .pillar-ring svg { width: 20px; height: 20px; }
+    .pillar h4 { font-size: 0.95rem; color: var(--burgundy); font-weight: 500; }
+    .pillar p  { font-size: 0.82rem; color: #888; text-align: center; margin: 0; }
+
+    /* ── PHOTO MOSAIC STRIP ──────────────────────────────── */
+    .photo-mosaic {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      height: 580px;
+    }
+    .mosaic-item {
+      overflow: hidden; position: relative;
+    }
+    .mosaic-item img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+      transition: transform 0.8s ease;
+    }
+    .mosaic-item:hover img { transform: scale(1.04); }
+    .mosaic-item + .mosaic-item { border-left: 3px solid var(--cream); }
+
+    @media (max-width: 768px) {
+      .photo-mosaic { grid-template-columns: 1fr; height: auto; }
+      .mosaic-item  { height: 300px; }
+      .mosaic-item + .mosaic-item { border-left: none; border-top: 3px solid var(--cream); }
+    }
+
+    /* ── WHAT IS BIOMAGNETISM ─────────────────────────────── */
+    .what-is {
+      background: var(--cream);
+      padding: 7rem 2rem;
+    }
+    .wi-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: center;
+    }
+    .wi-text h2  { color: var(--burgundy); font-style: italic; margin-bottom: 1.4rem; }
+    .wi-text p   { color: #444; line-height: 1.95; margin-bottom: 1.2rem; }
+    .wi-text .disclaimer {
+      font-size: 0.8rem; color: #999; font-style: italic; margin-top: 1.8rem;
+    }
+
+    .wi-img {
+      position: relative;
+    }
+    /* Real photo in biomagnetism section */
+    .wi-photo {
+      width: 100%; aspect-ratio: 4/5;
+      object-fit: cover; display: block;
+      border-radius: 2px;
+      position: relative; z-index: 1;
+    }
+
+    /* Corner ornaments */
+    .wi-img::before, .wi-img::after {
+      content: ''; position: absolute;
+      width: 72px; height: 72px;
+      pointer-events: none; z-index: 1;
+    }
+    .wi-img::before { top: -14px; left: -14px; border-top: 1px solid var(--sage); border-left: 1px solid var(--sage); }
+    .wi-img::after  { bottom: -14px; right: -14px; border-bottom: 1px solid var(--sage); border-right: 1px solid var(--sage); }
+
+    /* ── SESSION PHOTO (What to Expect) ──────────────────── */
+    .expect-photo-wrap {
+      max-width: 860px; margin: 0 auto 4rem;
+      border-radius: 2px; overflow: hidden;
+      position: relative;
+    }
+    .expect-photo-wrap img {
+      width: 100%; max-height: 400px;
+      object-fit: cover; object-position: center 40%;
+      display: block;
+    }
+    .expect-photo-wrap::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom,
+        transparent 50%, rgba(42,32,24,0.4) 100%);
+      pointer-events: none;
+    }
+
+    /* ── WHAT TO EXPECT ───────────────────────────────────── */
+    .expect {
+      background: var(--charcoal);
+      padding: 7rem 2rem;
+      text-align: center;
+    }
+    .expect .section-label { color: var(--sage-light); }
+    .expect h2   { color: var(--warm-white); font-style: italic; }
+    .expect .divider { background: rgba(169,186,149,0.4); margin-top: 1rem; margin-bottom: 4rem; }
+
+    .steps {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.8rem; max-width: 1000px; margin: 0 auto;
+    }
+    .step {
+      padding: 3rem 2rem;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 2px;
+      transition: background 0.3s;
+    }
+    .step:hover { background: rgba(255,255,255,0.09); }
+    .step-num {
+      font-family: var(--serif); font-size: 4.5rem; font-weight: 300;
+      color: rgba(255,255,255,0.09); line-height: 1; margin-bottom: 1.2rem;
+    }
+    .step h3 { color: var(--warm-white); font-style: italic; font-size: 1.35rem; margin-bottom: 0.9rem; }
+    .step p  { color: rgba(253,250,246,0.68); font-size: 0.88rem; line-height: 1.85; }
+
+    /* ── ABOUT ────────────────────────────────────────────── */
+    .about {
+      background: var(--warm-white);
+      padding: 7rem 2rem;
+    }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1.25fr;
+      gap: 5rem; align-items: center;
+    }
+
+    .portrait-wrap { position: relative; }
+    .portrait-bg-accent {
+      position: absolute; top: 20px; left: -20px;
+      width: 100%; height: 100%;
+      background: var(--cream-dark); border-radius: 2px; z-index: 0;
+    }
+    .portrait-frame {
+      position: relative; z-index: 1;
+      width: 100%; aspect-ratio: 3/4;
+      background: var(--cream-dark); border-radius: 2px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      color: #bbb; font-size: 0.78rem; letter-spacing: 0.1em; gap: 0.8rem;
+      overflow: hidden;
+    }
+    .portrait-frame::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(
+        45deg, transparent, transparent 12px,
+        rgba(0,0,0,0.01) 12px, rgba(0,0,0,0.01) 13px
+      );
+    }
+    .portrait-frame svg { width: 54px; height: 54px; opacity: 0.22; position: relative; z-index: 1; }
+    .portrait-frame span { position: relative; z-index: 1; }
+
+    .about-text .section-label { text-align: left; }
+    .about-text h2  { color: var(--burgundy); font-style: italic; margin-bottom: 1.4rem; }
+    .about-text p   { color: #444; line-height: 1.95; margin-bottom: 1.2rem; }
+    .about-philosophy-label {
+      font-family: var(--serif); font-size: 1.15rem; font-style: italic;
+      font-weight: 500; color: var(--burgundy) !important;
+      margin-top: 0.4rem; margin-bottom: 0.5rem !important;
+    }
+    .about-sig {
+      font-family: var(--serif); font-size: 1.85rem; font-style: italic;
+      color: var(--burgundy); margin-top: 2rem;
+    }
+
+    /* ── SERVICES ────────────────────────────────────────── */
+    .services {
+      background: var(--charcoal);
+      padding: 6rem 2rem;
+    }
+    .services-head { text-align: center; margin-bottom: 3rem; }
+    .services-head h2 { color: var(--warm-white); font-style: italic; margin-bottom: 0.8rem; }
+    .services-head .section-label { color: var(--sage-light); }
+    .services-head .divider { background: rgba(169,186,149,0.4); }
+    .services-head p  { color: rgba(253,250,242,0.6); max-width: 520px; margin: 0 auto; font-size: 0.9rem; }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 12px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    /* 6 cards: 3 per row, all equal */
+    .service-card { grid-column: span 2; }
+
+    .service-card {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      cursor: pointer;
+      display: block;
+      text-decoration: none;
+      border-radius: 16px;
+    }
+
+    .service-card-img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.7s ease;
+    }
+    .service-card:hover .service-card-img { transform: scale(1.06); }
+
+    /* Dark gradient overlay */
+    .service-card-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(20,16,12,0.1) 0%,
+        rgba(20,16,12,0.35) 40%,
+        rgba(20,16,12,0.82) 100%
+      );
+      transition: background 0.4s ease;
+    }
+    .service-card:hover .service-card-overlay {
+      background: linear-gradient(
+        to bottom,
+        rgba(20,16,12,0.2) 0%,
+        rgba(20,16,12,0.45) 40%,
+        rgba(20,16,12,0.88) 100%
+      );
+    }
+
+    .service-card-body {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 1.6rem 1.8rem;
+    }
+
+    .service-card-label {
+      font-family: var(--sans);
+      font-size: 0.62rem; letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--sage-light);
+      display: block; margin-bottom: 0.5rem;
+    }
+
+    .service-card h3 {
+      font-family: var(--serif);
+      font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+      font-style: italic; font-weight: 400;
+      color: #fff; line-height: 1.2;
+      margin-bottom: 0.8rem;
+    }
+
+    .service-card-price {
+      display: block;
+      font-family: var(--sans); font-size: 0.78rem;
+      font-weight: 400; letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 0.8rem;
+    }
+
+    .service-card-btn {
+      display: inline-block;
+      font-family: var(--sans); font-size: 0.65rem;
+      font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      border-bottom: 1px solid rgba(255,255,255,0.25);
+      padding-bottom: 2px;
+      transition: color 0.3s, border-color 0.3s;
+      opacity: 0; transform: translateY(6px);
+      transition: opacity 0.3s ease, transform 0.3s ease, color 0.3s;
+    }
+    .service-card:hover .service-card-btn {
+      opacity: 1; transform: translateY(0);
+      color: #fff; border-color: rgba(255,255,255,0.6);
+    }
+
+    /* ── TESTIMONIAL ROTATOR CARD ──────────────────────────── */
+    .service-card-testimonial {
+      background: #c8ccc9;
+      display: flex; flex-direction: column;
+      justify-content: space-between;
+      padding: 2rem 2rem 1.8rem;
+      cursor: default;
+      text-decoration: none;
+      overflow-y: auto;
+    }
+    .service-card-testimonial::-webkit-scrollbar { width: 4px; }
+    .service-card-testimonial::-webkit-scrollbar-track { background: transparent; }
+    .service-card-testimonial::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 4px; }
+    .srv-t-stars { display: flex; gap: 4px; margin-bottom: 1.2rem; }
+    .srv-t-stars svg { width: 14px; height: 14px; fill: #c9a96e; }
+    .srv-t-quote {
+      font-family: var(--serif); font-style: italic; font-weight: 400;
+      font-size: clamp(0.85rem, 1.2vw, 1rem);
+      color: #3a3028; line-height: 1.65;
+      flex: 1;
+      overflow: visible;
+    }
+    .srv-t-author { margin-top: 1.4rem; }
+    .srv-t-name {
+      font-family: var(--sans); font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.1em; color: var(--sage);
+    }
+    .srv-t-detail {
+      font-family: var(--sans); font-size: 0.62rem;
+      color: rgba(58,48,40,0.45); letter-spacing: 0.08em; margin-top: 2px;
+    }
+    .srv-t-dots {
+      display: flex; gap: 6px; margin-top: 1.2rem;
+    }
+    .srv-t-dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: rgba(255,255,255,0.2); transition: background 0.4s;
+    }
+    .srv-t-dot.active { background: var(--sage-light); }
+    /* fade transition */
+    .srv-t-inner { transition: opacity 0.6s ease; }
+    .srv-t-inner.fading { opacity: 0; }
+
+    /* ── CONTACT FORM ────────────────────────────────────── */
+    .cf-wrap {
+      max-width: 680px; margin: 0 auto;
+    }
+    .cf-form {
+      display: flex; flex-direction: column; gap: 1.2rem;
+    }
+    .cf-row {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem;
+    }
+    .cf-field {
+      display: flex; flex-direction: column; gap: 0.4rem;
+    }
+    .cf-field label {
+      font-family: var(--sans); font-size: 0.7rem;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: #888;
+    }
+    .cf-field input,
+    .cf-field select,
+    .cf-field textarea {
+      width: 100%; padding: 0.85rem 1rem;
+      font-family: var(--sans); font-size: 0.88rem; font-weight: 300;
+      color: var(--charcoal);
+      background: var(--warm-white);
+      border: 1px solid var(--beige);
+      border-radius: 2px; outline: none;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+    }
+    .cf-field input:focus,
+    .cf-field select:focus,
+    .cf-field textarea:focus {
+      border-color: var(--burgundy);
+    }
+    .cf-field textarea { resize: vertical; min-height: 120px; line-height: 1.7; }
+    .cf-field select { cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%234f6d73' d='M6 8L1 3h10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.5rem; }
+    .cf-submit {
+      padding: 0.9rem 2.4rem;
+      background: var(--burgundy); color: #fff;
+      font-family: var(--sans); font-size: 0.74rem;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      border: none; border-radius: 2px; cursor: pointer;
+      align-self: flex-start;
+      transition: background 0.3s;
+    }
+    .cf-submit:hover { background: var(--burgundy-dark); }
+    .cf-note {
+      font-size: 0.78rem; color: #999; margin-top: 0.2rem;
+      font-style: italic;
+    }
+    .cf-success {
+      display: none; text-align: center; padding: 2rem;
+      color: var(--burgundy); font-family: var(--serif);
+      font-size: 1.3rem; font-style: italic;
+    }
+
+    @media (max-width: 900px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .service-card:nth-child(1),
+      .service-card:nth-child(2),
+      .service-card:nth-child(3),
+      .service-card:nth-child(4),
+      .service-card:nth-child(5) { grid-column: span 1; }
+    }
+    @media (max-width: 560px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .service-card  { aspect-ratio: 3/2; }
+    }
+
+    /* ── CONTACT (COMBINED) ───────────────────────────────── */
+
+    /* ── FAQ ──────────────────────────────────────────────── */
+    .faq {
+      background: var(--cream-dark);
+      padding: 7rem 2rem;
+    }
+    .faq-head { text-align: center; margin-bottom: 4rem; }
+    .faq-head h2 { color: var(--burgundy); font-style: italic; margin-bottom: 0; }
+
+    .faq-list { max-width: 720px; margin: 0 auto; }
+
+    .faq-item { border-bottom: 1px solid var(--beige); }
+    .faq-item:first-child { border-top: 1px solid var(--beige); }
+
+    .faq-q {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.5rem 0; cursor: pointer; gap: 1.2rem;
+      user-select: none;
+    }
+    .faq-q h4 {
+      font-family: var(--serif); font-size: 1.12rem; font-weight: 400;
+      color: var(--charcoal); flex: 1;
+      transition: color 0.3s;
+    }
+    .faq-item.open .faq-q h4 { color: var(--burgundy); }
+
+    .faq-icon {
+      width: 28px; height: 28px; flex-shrink: 0;
+      border: 1px solid var(--beige); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--burgundy); transition: all 0.3s;
+    }
+    .faq-icon svg { transition: transform 0.35s; }
+    .faq-item.open .faq-icon { background: var(--burgundy); border-color: var(--burgundy); color: #fff; }
+    .faq-item.open .faq-icon svg { transform: rotate(45deg); }
+
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.45s ease; }
+    .faq-a-inner { padding: 0 0 1.5rem; color: #555; font-size: 0.92rem; line-height: 1.9; }
+    .faq-item.open .faq-a { max-height: 600px; }
+
+    /* ── CONTACT (COMBINED) ───────────────────────────────── */
+    .contact {
+      background: var(--warm-white);
+      padding: 7rem 2rem;
+    }
+    .contact-combined-head {
+      text-align: center; margin-bottom: 4rem;
+    }
+    .contact-combined-head h2 { color: var(--burgundy); font-style: italic; margin-bottom: 0; }
+    .contact-combined-grid {
+      display: grid; grid-template-columns: 1fr 1.6fr;
+      gap: 5rem; align-items: start; margin-bottom: 4rem;
+    }
+    .contact-map iframe {
+      width: 100%; border-radius: 4px;
+      filter: grayscale(30%) contrast(1.05);
+    }
+
+    .c-detail {
+      display: flex; align-items: flex-start; gap: 1.1rem; margin-bottom: 2rem;
+    }
+    .c-icon {
+      width: 40px; height: 40px; flex-shrink: 0;
+      border: 1px solid var(--beige); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--burgundy);
+    }
+    .c-icon svg { width: 15px; height: 15px; }
+    .c-text strong {
+      display: block; font-family: var(--serif); font-weight: 500;
+      font-size: 1.05rem; color: var(--burgundy); margin-bottom: 0.2rem;
+    }
+    .c-text span, .c-text a { display: block; color: #666; font-size: 0.88rem; text-decoration: none; }
+    .c-text a:hover { color: var(--burgundy); }
+
+    .map-placeholder {
+      width: 100%; aspect-ratio: 4/3;
+      background: var(--cream-dark); border-radius: 2px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      color: #ccc; font-size: 0.78rem; letter-spacing: 0.1em; gap: 0.8rem;
+      overflow: hidden; position: relative;
+    }
+    .map-placeholder::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        repeating-linear-gradient(0deg, transparent, transparent 32px, rgba(0,0,0,0.018) 32px, rgba(0,0,0,0.018) 33px),
+        repeating-linear-gradient(90deg, transparent, transparent 32px, rgba(0,0,0,0.018) 32px, rgba(0,0,0,0.018) 33px);
+    }
+    .map-placeholder svg { width: 32px; height: 32px; position: relative; }
+    .map-placeholder span { position: relative; }
+
+    /* ── TESTIMONIALS ────────────────────────────────────── */
+    .testimonials {
+      padding: 7rem 2rem;
+      background: var(--cream-dark);
+    }
+    .testimonials-head { text-align: center; margin-bottom: 4rem; }
+    .testimonials-head h2 { color: var(--burgundy); font-style: italic; margin-bottom: 1rem; }
+
+    .t-featured {
+      max-width: 780px; margin: 0 auto 5rem;
+      text-align: center;
+    }
+    .t-quote-mark {
+      font-family: var(--serif); font-size: 5rem;
+      color: var(--beige); line-height: 0.5;
+      display: block; margin-bottom: 1.2rem;
+    }
+    .t-featured blockquote {
+      font-family: var(--serif); font-size: clamp(1.3rem, 2.2vw, 1.75rem);
+      font-style: italic; font-weight: 300;
+      color: var(--charcoal); line-height: 1.6; margin-bottom: 1.2rem;
+    }
+    .t-featured cite {
+      font-family: var(--sans); font-size: 0.76rem;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--burgundy); font-style: normal;
+    }
+
+    /* marquee */
+    .t-marquee-wrap {
+      overflow: hidden; position: relative;
+      padding: 1.5rem 0 2.5rem;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 7%, black 93%, transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0%, black 7%, black 93%, transparent 100%);
+    }
+    .t-track {
+      display: flex; gap: 1.5rem;
+      width: max-content;
+      animation: t-marquee 50s linear infinite;
+    }
+    .t-marquee-wrap:hover .t-track { animation-play-state: paused; }
+    @keyframes t-marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    .t-card {
+      min-width: 320px; max-width: 320px; flex-shrink: 0;
+      background: var(--warm-white);
+      border: 1px solid var(--cream-dark);
+      border-radius: 14px; padding: 2rem;
+      display: flex; flex-direction: column; gap: 1.2rem;
+      transition: box-shadow 0.3s;
+    }
+    .t-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.07); }
+    .t-stars { display: flex; gap: 3px; }
+    .t-stars svg { width: 14px; height: 14px; fill: #C9A84C; stroke: none; }
+    .t-card blockquote {
+      font-family: var(--serif); font-size: 1.06rem;
+      font-style: italic; font-weight: 300;
+      color: #333; line-height: 1.75; flex: 1;
+    }
+    .t-card-footer {
+      display: flex; align-items: center; gap: 0.9rem;
+      border-top: 1px solid var(--cream-dark); padding-top: 1.1rem;
+    }
+    .t-avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--cream-dark);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--serif); font-size: 1rem;
+      font-style: italic; color: var(--burgundy); flex-shrink: 0;
+    }
+    .t-name {
+      font-family: var(--sans); font-size: 0.78rem;
+      font-weight: 500; letter-spacing: 0.06em; color: var(--charcoal);
+    }
+    .t-detail {
+      font-family: var(--sans); font-size: 0.68rem;
+      letter-spacing: 0.08em; color: #999;
+    }
+    .t-more-note {
+      text-align: center; font-size: 0.8rem;
+      color: #bbb; font-style: italic; letter-spacing: 0.06em;
+    }
+    .t-review-cta {
+      text-align: center; margin-top: 3.5rem;
+    }
+    .t-review-cta p {
+      font-size: 0.88rem; color: #777; margin-bottom: 1.2rem;
+    }
+
+    /* ── REVIEW FORM ─────────────────────────────────────── */
+    .review-form-wrap {
+      max-width: 680px; margin: 3rem auto 2rem;
+      padding: 3rem 2rem; background: var(--warm-white);
+      border-radius: 16px;
+    }
+    .review-form-head { text-align: center; margin-bottom: 2rem; }
+    .review-form-head h3 { font-family: var(--serif); font-style: italic; font-size: 1.6rem; color: var(--burgundy); margin-bottom: 0.4rem; }
+    .review-form-head p { font-size: 0.88rem; color: #888; }
+    .review-form { display: flex; flex-direction: column; gap: 1.2rem; }
+    .review-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+    .review-form-field { display: flex; flex-direction: column; gap: 0.4rem; }
+    .review-form-field label { font-family: var(--sans); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: #888; }
+    .review-form-field input, .review-form-field textarea {
+      padding: 0.85rem 1rem; border: 1px solid var(--beige);
+      border-radius: 6px; font-family: var(--sans); font-size: 0.9rem;
+      background: #fff; color: var(--charcoal);
+      transition: border-color 0.2s;
+    }
+    .review-form-field input:focus, .review-form-field textarea:focus { outline: none; border-color: var(--sage); }
+    .review-form-field textarea { resize: vertical; }
+    /* Star rating */
+    .star-rating { display: flex; flex-direction: row-reverse; gap: 4px; width: fit-content; }
+    .star-rating input { display: none; }
+    .star-rating label { font-size: 2rem; color: #ddd; cursor: pointer; transition: color 0.2s; }
+    .star-rating label:hover, .star-rating label:hover ~ label,
+    .star-rating input:checked ~ label { color: #c9a96e; }
+    .review-success { text-align: center; color: var(--sage); font-size: 0.9rem; margin-top: 0.5rem; }
+    @media (max-width: 600px) { .review-form-row { grid-template-columns: 1fr; } }
+
+    /* ── FOOTER ───────────────────────────────────────────── */
+    footer {
+      background: var(--black);
+      padding: 4rem 2rem 3rem;
+      text-align: center;
+    }
+    .footer-logo {
+      font-family: var(--serif); font-size: 1.5rem;
+      color: #fff; letter-spacing: 0.07em; margin-bottom: 0.5rem;
+    }
+    .footer-tagline {
+      font-size: 0.72rem; color: rgba(255,255,255,0.35);
+      letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 2.2rem;
+    }
+    .footer-disc {
+      font-size: 0.76rem; color: rgba(255,255,255,0.3);
+      max-width: 580px; margin: 0 auto 2.5rem;
+      line-height: 1.75; font-style: italic;
+    }
+    .footer-nav {
+      display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;
+      list-style: none; margin-bottom: 2rem;
+    }
+    .footer-nav a {
+      font-size: 0.7rem; color: rgba(255,255,255,0.3);
+      text-decoration: none; letter-spacing: 0.12em; text-transform: uppercase;
+      transition: color 0.3s;
+    }
+    .footer-nav a:hover { color: rgba(255,255,255,0.7); }
+    .footer-copy {
+      font-size: 0.7rem; color: rgba(255,255,255,0.18);
+      border-top: 1px solid rgba(255,255,255,0.07); padding-top: 1.5rem;
+    }
+
+    /* ── WHATSAPP FLOAT (removed) ─────────────────────────── */
+    .whatsapp-float {
+      display: none;
+    }
+    .whatsapp-float svg { width: 28px; height: 28px; }
+
+    /* ── LANGUAGE TOGGLE ─────────────────────────────────── */
+    .lang-toggle {
+      display: flex; align-items: center; gap: 0.4rem;
+      font-family: var(--sans); font-size: 0.7rem; letter-spacing: 0.12em;
+    }
+    .lang-btn {
+      background: none; border: none; cursor: pointer;
+      font-family: var(--sans); font-size: 0.7rem; letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.7); padding: 0; transition: color 0.3s;
+    }
+    .lang-btn.active { color: #fff; font-weight: 600; }
+    nav.scrolled .lang-btn { color: #4f6d73; }
+    nav.scrolled .lang-btn.active { color: #3a5258; font-weight: 600; }
+    nav.scrolled .lang-toggle span { color: #4f6d73; }
+    .lang-toggle span { color: rgba(255,255,255,0.4); }
+
+    /* ── RESPONSIVE ───────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .wi-grid, .about-grid, .contact-combined-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .wi-img { order: -1; }
+      .steps  { grid-template-columns: 1fr; max-width: 400px; }
+      .b-form { grid-template-columns: 1fr; }
+      .fg.full { grid-column: 1; }
+      .t-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .t-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none; position: fixed; inset: 0;
+        background: var(--cream); flex-direction: column;
+        justify-content: center; align-items: center;
+        gap: 2.5rem; z-index: 200;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { color: #4f6d73 !important; font-size: 1rem; }
+      .nav-cta { border-color: var(--burgundy) !important; color: var(--burgundy) !important; }
+      .hamburger { display: flex; }
+      .b-card-body { padding: 1.5rem; }
+      .b-card-top  { padding: 1.5rem; }
+      .b-card { width: 100%; margin: 0; border-radius: 2px; }
+      .contact { padding: 4rem 1rem; }
+      .cf-row { grid-template-columns: 1fr; }
+      .b-form { grid-template-columns: 1fr; }
+      .fg.full { grid-column: 1; }
+      .about-grid { gap: 2rem; }
+      .portrait-bg-accent { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAVIGATION ══════════════════════════════════════════ -->
+<nav id="site-nav">
+  <a href="#home" class="nav-logo">
+    <div class="nav-logo-wrap">
+      <img src="Logo_1.png" alt="Magnets Maven" class="logo-light" />
+      <img src="Logo_2.png" alt="Magnets Maven" class="logo-dark" />
+    </div>
+  </a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#what-is" onclick="closeMenu()" data-i18n="nav_bio">Biomagnetism</a></li>
+    <li><a href="#about" onclick="closeMenu()" data-i18n="nav_about">About</a></li>
+    <li><a href="#services" onclick="closeMenu()" data-i18n="nav_services">Services</a></li>
+    <li><a href="#faq" onclick="closeMenu()" data-i18n="nav_faq">FAQ</a></li>
+    <li><a href="#contact" onclick="closeMenu()" data-i18n="contact_label">Get in Touch</a></li>
+    <li><a href="https://app.squareup.com/appointments/buyer/widget/snfk9pxnpoiuia/L5VZTDB83REHK" target="_blank" rel="noopener" class="nav-cta" onclick="closeMenu()" data-i18n="nav_book">Book a Session</a></li>
+  </ul>
+  <div class="lang-toggle">
+    <button onclick="setLang('en')" id="btn-en" class="lang-btn active">EN</button>
+    <span>|</span>
+    <button onclick="setLang('es')" id="btn-es" class="lang-btn">ES</button>
+  </div>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ══ HERO ════════════════════════════════════════════════ -->
+<section class="hero" id="home">
+  <video class="hero-video" autoplay muted loop playsinline poster="ChatGPT Image May 11, 2026, 01_59_00 PM.png">
+    <source src="VIDEO.mp4" type="video/mp4" />
+  </video>
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow" data-i18n="hero_eyebrow">Balance &nbsp;·&nbsp; Heal &nbsp;·&nbsp; Realign</span>
+    <h1 data-i18n="hero_h1">Restoring Harmony Within the Body<br>to Support Deep and Natural Healing.</h1>
+    <p class="hero-sub" data-i18n="hero_sub">Biomagnetism is a gentle yet powerful therapy that uses magnets to support your body's natural ability to heal.</p>
+    <div class="hero-buttons">
+      <a href="https://app.squareup.com/appointments/buyer/widget/snfk9pxnpoiuia/L5VZTDB83REHK" target="_blank" rel="noopener" class="btn-primary" data-i18n="btn_book">Book a Session</a>
+      <a href="#what-is" class="btn-ghost" data-i18n="btn_learn">Learn More</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-bar"></div>
+    <span data-i18n="scroll">Scroll</span>
+  </div>
+</section>
+
+<!-- ══ INTRODUCTION ════════════════════════════════════════ -->
+<section class="intro" id="intro">
+  <div class="container-narrow">
+    <span class="section-label reveal" data-i18n="intro_label">Welcome</span>
+    <div class="divider reveal"></div>
+    <h2 class="reveal" data-i18n="intro_h2">A Space for Stillness<br>and Gentle Renewal</h2>
+    <p class="reveal" style="margin-top:1.4rem;" data-i18n="intro_p1">
+      Magnets Maven offers biomagnetic therapy sessions in a calm, intentional setting —
+      designed for those seeking a thoughtful complement to their wellness routine.
+      Each session is personal, unhurried, and crafted around your comfort.
+    </p>
+    <p class="reveal" data-i18n="intro_p2">
+      Whether you are new to biomagnetism or simply curious, you are warmly welcomed here.
+    </p>
+
+    <div class="pillars reveal">
+      <div class="pillar">
+        <div class="pillar-ring">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <h4 data-i18n="pillar1_h4">Gentle &amp; Non-Invasive</h4>
+        <p data-i18n="pillar1_p">Clients rest fully clothed throughout the session</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-ring">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+          </svg>
+        </div>
+        <h4 data-i18n="pillar2_h4">60–75 Minutes</h4>
+        <p data-i18n="pillar2_p">Unhurried sessions in a quiet, peaceful space</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-ring">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+        </div>
+        <h4 data-i18n="pillar3_h4">Personalized Care</h4>
+        <p data-i18n="pillar3_p">Every session tailored individually to you</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PHOTO MOSAIC ═════════════════════════════════════════ -->
+<section class="photo-mosaic">
+  <div class="mosaic-item">
+    <img src="photo-holding.jpg" alt="Hands holding biomagnetic magnets, red and black" />
+  </div>
+  <div class="mosaic-item">
+    <img src="photo-lifestyle.jpg" alt="Magnets Maven lifestyle — desk with tea, book and magnets" />
+  </div>
+</section>
+
+<!-- ══ WHAT IS BIOMAGNETISM ════════════════════════════════ -->
+<section class="what-is" id="what-is">
+  <div class="container">
+    <div class="wi-grid">
+      <div class="wi-img reveal">
+        <div class="portrait-bg-accent"></div>
+        <img
+          src="photo-hands-placing.jpg"
+          alt="Placing biomagnetic magnets with care"
+          class="wi-photo"
+        />
+      </div>
+
+      <div class="wi-text reveal">
+        <span class="section-label" data-i18n="wi_label">The Practice</span>
+        <div class="divider divider-left"></div>
+        <h2 data-i18n="wi_h2">What is<br>Biomagnetism?</h2>
+        <p data-i18n="wi_p1">
+          Biomagnetism is a simple, gentle, yet powerful therapy that detects imbalances in
+          the body due to germs, toxins, or emotions. The practitioner places medium-sized
+          magnets on specific points of the body using different polarities to clear these
+          germs, toxins, imbalances, or emotions.
+        </p>
+        <p data-i18n="wi_p2">
+          By applying magnetic pairs to specific points on the body, we help restore your
+          natural pH. When the pH is balanced (neutral) your body starts to heal naturally.
+        </p>
+        <p class="disclaimer" data-i18n="wi_disc">
+          Biomagnetism is a complementary practice and is not intended to diagnose, treat,
+          cure, or prevent any medical condition. Please consult your healthcare provider
+          for any health concerns.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ WHAT TO EXPECT ══════════════════════════════════════ -->
+<section class="expect" id="expect">
+  <div class="container">
+    <span class="section-label reveal" data-i18n="exp_label">Your Journey</span>
+    <h2 class="reveal" data-i18n="exp_h2">Before Your Session</h2>
+    <div class="divider reveal"></div>
+
+    <div class="expect-photo-wrap reveal">
+      <img src="photo-session.jpg" alt="Biomagnetic therapy session — magnets gently placed on the body" />
+    </div>
+
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">01</div>
+        <h3 data-i18n="step1_h3">Before Your Session</h3>
+        <p data-i18n="step1_p">
+          Your initial session begins with a comprehensive review and analysis of your
+          current goals. The practitioner identifies imbalances in your body.
+        </p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">02</div>
+        <h3 data-i18n="step2_h3">During the Session</h3>
+        <p data-i18n="step2_p">
+          During the session, the practitioner places magnets on specific points while you
+          rest, fully clothed, on a massage table. The magnets typically remain
+          in place for about 20 minutes.
+        </p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">03</div>
+        <h3 data-i18n="step3_h3">After the Session</h3>
+        <p data-i18n="step3_p">
+          Take your time returning to the moment. We encourage you to hydrate well, rest
+          if possible, and give yourself a quiet evening.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ABOUT ════════════════════════════════════════════════ -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+
+      <div class="portrait-wrap reveal">
+        <div class="portrait-bg-accent"></div>
+        <img
+          src="Stephanie.png"
+          alt="Stephanie Bassaler — founder of Magnets Maven"
+          class="portrait-frame"
+          style="object-fit: cover; object-position: center top;"
+        />
+      </div>
+
+      <div class="about-text reveal">
+        <span class="section-label" data-i18n="about_label">The Person Behind the Practice</span>
+        <div class="divider divider-left"></div>
+        <h2 data-i18n="about_h2">Guided by Intuition,<br>Driven by Balance</h2>
+        <p data-i18n="about_p1">
+          Hello and welcome! My name is Stephanie Bassaler, and my journey into the world of
+          Biomagnetism didn't begin with a personal medical crisis or a dramatic cure. It began
+          with something far more quiet, yet incredibly powerful: pure curiosity and a deep
+          fascination with natural medicine.
+        </p>
+        <p data-i18n="about_p2">
+          For years, I found myself drawn to holistic traditions. When I first discovered
+          Biomagnetism, something deeply resonated within me. It wasn't just an interest;
+          it was a calling.
+        </p>
+        <p data-i18n="about_p3">
+          Exploring this profound therapy awakened my intuition in a way I had never
+          experienced before. It gave me the clarity to trust my inner guidance and the courage
+          to step into my purpose, believe in myself, and begin practicing.
+        </p>
+        <p data-i18n="about_p4" class="about-philosophy-label">My Philosophy</p>
+        <p data-i18n="about_p5">
+          I believe that the body knows exactly how to heal when given the right environment.
+          My role as a practitioner isn't to "fix" you, but to listen to your body's unique
+          energetic language. By using biomagnetic pairs to restore balance and clear
+          blockages — whether physical, toxic, or emotional — we create the space for your
+          body's natural intelligence to take over.
+        </p>
+        <div class="about-sig">Stephanie Bassaler</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ SERVICES ════════════════════════════════════════════ -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="services-head reveal">
+      <span class="section-label" data-i18n="srv_label">What We Offer</span>
+      <div class="divider"></div>
+      <h2 data-i18n="srv_h2">Sessions &amp; Services</h2>
+      <p data-i18n="srv_desc">Every session is tailored to the individual — whether you are seeking relaxation, recovery, or simply a moment of calm.</p>
+    </div>
+
+    <div class="services-grid">
+
+      <!-- 1. Adult -->
+      <a href="https://book.squareup.com/appointments/snfk9pxnpoiuia/location/L5VZTDB83REHK/services/FWQZBY4F6P4JDQT2FM2FTQVM" target="_blank" rel="noopener" class="service-card reveal">
+        <img src="StephanieB2025-5.jpg" alt="Adult Biomagnetism Session" class="service-card-img" />
+        <div class="service-card-overlay"></div>
+        <div class="service-card-body">
+          <span class="service-card-label" data-i18n="srv_card1_label">60–75 min</span>
+          <h3 data-i18n="srv_card1_h3">Adult Biomagnetism Session</h3>
+          <span class="service-card-price">$180</span>
+          <span class="service-card-btn" data-i18n="btn_book_session">Book This Session</span>
+        </div>
+      </a>
+
+      <!-- 2. Children -->
+      <a href="https://book.squareup.com/appointments/snfk9pxnpoiuia/location/L5VZTDB83REHK/services/3UADPUJOTLOCQT6OIFRQWLSN" target="_blank" rel="noopener" class="service-card reveal">
+        <img src="WhatsApp Image 2026-05-11 at 14.26.22.jpeg" alt="Children Biomagnetism Session" class="service-card-img" />
+        <div class="service-card-overlay"></div>
+        <div class="service-card-body">
+          <span class="service-card-label" data-i18n="srv_card2_label">45–60 min</span>
+          <h3 data-i18n="srv_card2_h3">Children Biomagnetism Session</h3>
+          <span class="service-card-price">$120</span>
+          <span class="service-card-btn" data-i18n="btn_book_session">Book This Session</span>
+        </div>
+      </a>
+
+      <!-- 3. Pet Virtual -->
+      <a href="https://book.squareup.com/appointments/snfk9pxnpoiuia/location/L5VZTDB83REHK/services/UN2JPGEAE54QGEEBANP7W3FA" target="_blank" rel="noopener" class="service-card reveal">
+        <img src="MagnecMagic-154.jpg" alt="Pet Virtual Biomagnetism Session" class="service-card-img" />
+        <div class="service-card-overlay"></div>
+        <div class="service-card-body">
+          <span class="service-card-label" data-i18n="srv_card3_label">30–45 min · Virtual</span>
+          <h3 data-i18n="srv_card3_h3">Pet Virtual Biomagnetism Session</h3>
+          <span class="service-card-price">$120</span>
+          <span class="service-card-btn" data-i18n="btn_book_session">Book This Session</span>
+        </div>
+      </a>
+
+      <!-- 4. Virtual Adult -->
+      <a href="https://book.squareup.com/appointments/snfk9pxnpoiuia/location/L5VZTDB83REHK/services/MYIWQPY3RP5SUVLSYAG6O5WQ" target="_blank" rel="noopener" class="service-card reveal">
+        <img src="MagnecMagic-76.jpg" alt="Virtual Adult Biomagnetism Session" class="service-card-img" />
+        <div class="service-card-overlay"></div>
+        <div class="service-card-body">
+          <span class="service-card-label" data-i18n="srv_card4_label">60 min · Online</span>
+          <h3 data-i18n="srv_card4_h3">Virtual Adult Biomagnetism Session</h3>
+          <span class="service-card-price">$180</span>
+          <span class="service-card-btn" data-i18n="btn_book_session">Book This Session</span>
+        </div>
+      </a>
+
+      <!-- 5. Virtual Children -->
+      <a href="https://book.squareup.com/appointments/snfk9pxnpoiuia/location/L5VZTDB83REHK/services/2X6QO7WWH5VDCVCUBXUV3HUQ" target="_blank" rel="noopener" class="service-card reveal">
+        <img src="IMG_0529.jpg" alt="Virtual Children Biomagnetism Session" class="service-card-img" />
+        <div class="service-card-overlay"></div>
+        <div class="service-card-body">
+          <span class="service-card-label" data-i18n="srv_card5_label">45–60 min · Online</span>
+          <h3 data-i18n="srv_card5_h3">Virtual Children Biomagnetism Session</h3>
+          <span class="service-card-price">$120</span>
+          <span class="service-card-btn" data-i18n="btn_book_session">Book This Session</span>
+        </div>
+      </a>
+
+      <!-- 6. Rotating Testimonial -->
+      <div class="service-card service-card-testimonial reveal" id="srvTestimonial">
+        <div class="srv-t-inner" id="srvTInner">
+          <div class="srv-t-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="srv-t-quote" id="srvTQuote">"I had never tried biomagnetism before and wasn't sure what to expect. Stephanie made me feel completely at ease from the moment I walked in. The session was deeply relaxing — I fell asleep on the table!"</p>
+          <div class="srv-t-author">
+            <p class="srv-t-name" id="srvTName">Andrea M.</p>
+            <p class="srv-t-detail" id="srvTDetail">Adult Session · Coral Gables</p>
+          </div>
+        </div>
+        <div class="srv-t-dots" id="srvTDots"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ TESTIMONIALS ══════════════════════════════════════════ -->
+<section class="testimonials" id="testimonials">
+
+    <div class="testimonials-head reveal" style="text-align:center; margin-bottom:3rem;">
+      <span class="section-label" data-i18n="test_label">Client Stories</span>
+      <div class="divider"></div>
+      <h2 data-i18n="test_h2">Words from Our Clients</h2>
+    </div>
+
+    <div class="t-marquee-wrap">
+      <div class="t-track">
+
+        <div class="t-card"><div class="t-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><blockquote>"I had never tried biomagnetism before and wasn't sure what to expect. Stephanie made me feel completely at ease from the moment I walked in. The session was deeply relaxing — I fell asleep on the table!"</blockquote><div class="t-card-footer"><div class="t-avatar">A</div><div><p class="t-name">Andrea M.</p><p class="t-detail">Adult Session · Coral Gables</p></div></div></div>
+
+        <div class="t-card"><div class="t-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><blockquote>"I brought my 8-year-old daughter who has been struggling with sleep. After two sessions with Stephanie, she is sleeping so much better. Stephanie was incredibly patient and gentle with her."</blockquote><div class="t-card-footer"><div class="t-avatar">C</div><div><p class="t-name">Carolina R.</p><p class="t-detail">Children's Session · Miami</p></div></div></div>
+
+        <div class="t-card"><div class="t-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><blockquote>"The virtual session for my cat was something I was skeptical about, but honestly the results surprised me. Stephanie walked me through everything clearly. Will definitely book again."</blockquote><div class="t-card-footer"><div class="t-avatar">L</div><div><p class="t-name">Lorena V.</p><p class="t-detail">Pet Virtual Session · Online</p></div></div></div>
+
+        <div class="t-card"><div class="t-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><blockquote>"Stephanie has a very calming presence. The space at Lipé House is beautiful and peaceful. I left my first session feeling like I had just had the best nap of my life."</blockquote><div class="t-card-footer"><div class="t-avatar">S</div><div><p class="t-name">Sofía P.</p><p class="t-detail">Adult Session · Coral Gables</p></div></div></div>
+
+        <div class="t-card"><div class="t-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><blockquote>"I did the virtual adult session from my home in Bogotá. I was a bit nervous about how it would work remotely, but Stephanie guided me through everything. Truly a beautiful experience."</blockquote><div class="t-card-footer"><div class="t-avatar">M</div><div><p class="t-name">Marcela T.</p><p class="t-detail">Virtual Adult Session · Online</p></div></div></div>
+
+        <div class="t-card"><div class="t-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><blockquote>"What I appreciated most was that Stephanie never rushed. She answered all my questions, explained everything clearly, and made me feel genuinely cared for. I will be back."</blockquote><div class="t-card-footer"><div class="t-avatar">I</div><div><p class="t-name">Isabella F.</p><p class="t-detail">Adult Session · Miami Beach</p></div></div></div>
+
+        <!-- duplicate set for seamless loop -->
+        <div class="t-card"><div class="t-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><blockquote>"I had never tried biomagnetism before and wasn't sure what to expect. Stephanie made me feel completely at ease from the moment I walked in. The session was deeply relaxing — I fell asleep on the table!"</blockquote><div class="t-card-footer"><div class="t-avatar">A</div><div><p class="t-name">Andrea M.</p><p class="t-detail">Adult Session · Coral Gables</p></div></div></div>
+
+        <div class="t-card"><div class="t-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><blockquote>"I brought my 8-year-old daughter who has been struggling with sleep. After two sessions with Stephanie, she is sleeping so much better. Stephanie was incredibly patient and gentle with her."</blockquote><div class="t-card-footer"><div class="t-avatar">C</div><div><p class="t-name">Carolina R.</p><p class="t-detail">Children's Session · Miami</p></div></div></div>
+
+        <div class="t-card"><div class="t-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><blockquote>"The virtual session for my cat was something I was skeptical about, but honestly the results surprised me. Stephanie walked me through everything clearly. Will definitely book again."</blockquote><div class="t-card-footer"><div class="t-avatar">L</div><div><p class="t-name">Lorena V.</p><p class="t-detail">Pet Virtual Session · Online</p></div></div></div>
+
+        <div class="t-card"><div class="t-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><blockquote>"Stephanie has a very calming presence. The space at Lipé House is beautiful and peaceful. I left my first session feeling like I had just had the best nap of my life."</blockquote><div class="t-card-footer"><div class="t-avatar">S</div><div><p class="t-name">Sofía P.</p><p class="t-detail">Adult Session · Coral Gables</p></div></div></div>
+
+        <div class="t-card"><div class="t-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><blockquote>"I did the virtual adult session from my home in Bogotá. I was a bit nervous about how it would work remotely, but Stephanie guided me through everything. Truly a beautiful experience."</blockquote><div class="t-card-footer"><div class="t-avatar">M</div><div><p class="t-name">Marcela T.</p><p class="t-detail">Virtual Adult Session · Online</p></div></div></div>
+
+        <div class="t-card"><div class="t-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><blockquote>"What I appreciated most was that Stephanie never rushed. She answered all my questions, explained everything clearly, and made me feel genuinely cared for. I will be back."</blockquote><div class="t-card-footer"><div class="t-avatar">I</div><div><p class="t-name">Isabella F.</p><p class="t-detail">Adult Session · Miami Beach</p></div></div></div>
+
+      </div>
+    </div>
+
+    <!-- Review Form -->
+    <div class="review-form-wrap reveal">
+      <div class="review-form-head">
+        <span class="section-label">Share Your Experience</span>
+        <div class="divider"></div>
+        <h3>Had a session with Stephanie?</h3>
+        <p>Your words help others find their way.</p>
+      </div>
+      <form class="review-form" id="reviewForm" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="2caae6c5-c47b-4cca-8fb6-c111396bce76" />
+        <input type="hidden" name="subject" value="New Review - Magnets Maven" />
+        <div class="review-form-row">
+          <div class="review-form-field">
+            <label>Your Name</label>
+            <input type="text" name="name" placeholder="Andrea M." required />
+          </div>
+          <div class="review-form-field">
+            <label>Location</label>
+            <input type="text" name="location" placeholder="Miami, FL" />
+          </div>
+        </div>
+        <div class="review-form-field">
+          <label>Your Rating</label>
+          <div class="star-rating">
+            <input type="radio" name="rating" value="5" id="s5" required /><label for="s5">★</label>
+            <input type="radio" name="rating" value="4" id="s4" /><label for="s4">★</label>
+            <input type="radio" name="rating" value="3" id="s3" /><label for="s3">★</label>
+            <input type="radio" name="rating" value="2" id="s2" /><label for="s2">★</label>
+            <input type="radio" name="rating" value="1" id="s1" /><label for="s1">★</label>
+          </div>
+        </div>
+        <div class="review-form-field">
+          <label>Your Review</label>
+          <textarea name="review" rows="4" placeholder="Tell us about your experience with Stephanie…" required></textarea>
+        </div>
+        <button type="submit" class="btn-primary">Submit Review</button>
+        <p class="review-success" id="reviewSuccess" style="display:none;">Thank you! Your review has been received.</p>
+      </form>
+    </div>
+
+</section>
+
+<!-- ══ FAQ ══════════════════════════════════════════════════ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="faq-head reveal">
+      <span class="section-label" data-i18n="faq_label">Common Questions</span>
+      <div class="divider"></div>
+      <h2 data-i18n="faq_h2">Frequently Asked Questions</h2>
+    </div>
+
+    <div class="faq-list">
+
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <h4 data-i18n="faq1_q">What should I wear?</h4>
+          <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner" data-i18n="faq1_a">
+          Comfortable, loose-fitting clothing is ideal — something you can rest in easily.
+          You remain fully clothed throughout the entire session, so there is no need to
+          change or undress.
+        </div></div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <h4 data-i18n="faq2_q">Is the session painful?</h4>
+          <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner" data-i18n="faq2_a">
+          No. Biomagnetic therapy is a gentle, non-invasive practice. Magnets are placed
+          on the body with care — there is no pressure, manipulation, or discomfort involved.
+          Most clients find the experience deeply relaxing.
+        </div></div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <h4 data-i18n="faq3_q">How long does a session last?</h4>
+          <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner" data-i18n="faq3_a">
+          Sessions typically last between 60 and 75 minutes. The introductory session may
+          take a little longer, as it includes a brief intake conversation so we can get
+          to know your needs before we begin.
+        </div></div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <h4 data-i18n="faq4_q">Is biomagnetism a replacement for medical care?</h4>
+          <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner" data-i18n="faq4_a">
+          No. Biomagnetism is a complementary wellness practice and should not be used as
+          a substitute for professional medical advice, diagnosis, or treatment. If you
+          have a health concern, please consult your doctor or healthcare provider.
+          Biomagnetic therapy is intended to complement — not replace — conventional care.
+        </div></div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <h4 data-i18n="faq5_q">Can I book if I am pregnant, have a pacemaker, or have implanted medical devices?</h4>
+          <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner" data-i18n="faq5_a">
+          If you are pregnant, have a pacemaker, or have any implanted medical devices
+          (such as cochlear implants or insulin pumps), please reach out before booking.
+          We ask that you share this information so we can discuss whether a session is
+          appropriate for you. Your safety is always the priority.
+        </div></div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <h4 data-i18n="faq6_q">What should I expect after the session?</h4>
+          <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner" data-i18n="faq6_a">
+          Many clients feel a sense of calm and lightness after a session. We recommend
+          drinking plenty of water, resting if you feel the need to, and allowing yourself
+          a gentle, easy evening. Some people notice a shift over the following day or two —
+          simply be attentive to how your body responds.
+        </div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ CONTACT (COMBINED) ═════════════════════════════════ -->
+<section class="contact" id="contact">
+  <div class="container">
+
+    <div class="contact-combined-head reveal">
+      <span class="section-label" data-i18n="contact_label">Get in Touch</span>
+      <div class="divider"></div>
+      <h2 data-i18n="contact_h2">Let's Connect</h2>
+    </div>
+
+    <div class="contact-combined-grid reveal">
+
+      <!-- Left: contact details -->
+      <div class="contact-info">
+        <div class="c-detail">
+          <div class="c-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </div>
+          <div class="c-text">
+            <strong data-i18n="contact_email_label">Email</strong>
+            <a href="mailto:stephanie@magnetsmaven.com">stephanie@magnetsmaven.com</a>
+          </div>
+        </div>
+
+        <div class="c-detail">
+          <div class="c-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.07 6.07l.91-.9a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+          </div>
+          <div class="c-text">
+            <strong data-i18n="contact_phone_label">Phone</strong>
+            <a href="tel:+13059047727">+1 (305) 904-7727</a>
+          </div>
+        </div>
+
+        <div class="c-detail">
+          <div class="c-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+          </div>
+          <div class="c-text">
+            <strong data-i18n="contact_loc_label">Location</strong>
+            <span>Lipé House of Wellness</span>
+            <span>4928 S Le Jeune Rd, Coral Gables, FL 33146</span>
+          </div>
+        </div>
+
+        <div class="c-detail">
+          <div class="c-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+          </div>
+          <div class="c-text">
+            <strong data-i18n="contact_ig_label">Instagram</strong>
+            <a href="https://instagram.com/magnetsmaven" target="_blank" rel="noopener">@magnetsmaven</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: contact form -->
+      <div class="contact-form-side">
+        <form class="cf-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="2caae6c5-c47b-4cca-8fb6-c111396bce76" />
+          <input type="hidden" name="subject" value="New message from Magnets Maven website" />
+          <input type="hidden" name="redirect" value="" />
+          <input type="checkbox" name="botcheck" style="display:none" />
+
+          <div class="cf-row">
+            <div class="cf-field">
+              <label for="cf-name" data-i18n="cf_name_label">Full Name</label>
+              <input type="text" id="cf-name" name="name" placeholder="Your name" required data-i18n-placeholder="cf_name_ph" />
+            </div>
+            <div class="cf-field">
+              <label for="cf-email" data-i18n="cf_email_label">Email Address</label>
+              <input type="email" id="cf-email" name="email" placeholder="your@email.com" required />
+            </div>
+          </div>
+
+          <div class="cf-row">
+            <div class="cf-field">
+              <label for="cf-phone" data-i18n="cf_phone_label">Phone (optional)</label>
+              <input type="tel" id="cf-phone" name="phone" placeholder="+1 (305) 000-0000" data-i18n-placeholder="cf_phone_ph" />
+            </div>
+            <div class="cf-field">
+              <label for="cf-service" data-i18n="cf_service_label">Interested In</label>
+              <select id="cf-service" name="service">
+                <option value="" data-i18n="cf_service_default">Select a session type…</option>
+                <option value="Adult In-Person" data-i18n="cf_service_adult_ip">Adult In-Person ($180)</option>
+                <option value="Children In-Person" data-i18n="cf_service_child_ip">Children In-Person ($120)</option>
+                <option value="Pet Virtual" data-i18n="cf_service_pet">Pet Virtual ($120)</option>
+                <option value="Adult Virtual" data-i18n="cf_service_adult_v">Adult Virtual ($180)</option>
+                <option value="Children Virtual" data-i18n="cf_service_child_v">Children Virtual ($120)</option>
+                <option value="Not sure" data-i18n="cf_service_unsure">Not sure yet</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="cf-field">
+            <label for="cf-message" data-i18n="cf_msg_label">Message</label>
+            <textarea id="cf-message" name="message" placeholder="Tell Stephanie a little about what brought you here…" required data-i18n-placeholder="cf_msg_ph"></textarea>
+          </div>
+
+          <div>
+            <button type="submit" class="cf-submit" data-i18n="cf_submit">Send Message</button>
+            <p class="cf-note" data-i18n="cf_note">We typically respond within 24 hours. For faster replies, message via WhatsApp.</p>
+          </div>
+        </form>
+
+        <div class="cf-success" id="cfSuccess">
+          <p data-i18n="cf_success">Thank you — your message has been sent. Stephanie will be in touch soon.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Map: full width below -->
+    <div class="contact-map reveal">
+      <iframe
+        src="https://maps.google.com/maps?q=4928+S+Le+Jeune+Rd,+Coral+Gables,+FL+33146&output=embed"
+        width="100%" height="340"
+        style="border:0; border-radius: 4px; filter: grayscale(30%) contrast(1.05);"
+        allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Lipé House of Wellness location">
+      </iframe>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ FOOTER ═══════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-logo">Magnets Maven</div>
+  <div class="footer-tagline" data-i18n="footer_tagline">Biomagnetic Therapy by Stephanie Bassaler</div>
+  <p class="footer-disc" data-i18n="footer_disc">
+    Biomagnetic therapy is a complementary wellness practice and is not a substitute
+    for medical advice, diagnosis, or treatment. Always consult a qualified healthcare
+    provider regarding any health concerns.
+  </p>
+  <ul class="footer-nav">
+    <li><a href="#what-is" data-i18n="nav_bio">Biomagnetism</a></li>
+    <li><a href="#about" data-i18n="nav_about">About</a></li>
+    <li><a href="#services" data-i18n="nav_services">Services</a></li>
+    <li><a href="#faq" data-i18n="nav_faq">FAQ</a></li>
+    <li><a href="#contact" data-i18n="contact_label">Get in Touch</a></li>
+  </ul>
+  <p class="footer-copy" data-i18n="footer_copy">2026 Magnets Maven</p>
+</footer>
+
+<!-- ══ MOBILE STICKY BOOK BUTTON ════════════════════════════ -->
+
+
+
+<!-- ══ SCRIPTS ══════════════════════════════════════════════ -->
+<script>
+  /* Nav scroll effect */
+  const siteNav = document.getElementById('site-nav');
+  window.addEventListener('scroll', () => {
+    siteNav.classList.toggle('scrolled', window.scrollY > 50);
+  }, { passive: true });
+
+  /* Mobile menu */
+  function toggleMenu() {
+    const links = document.getElementById('nav-links');
+    links.classList.toggle('open');
+    siteNav.classList.toggle('menu-open');
+    siteNav.classList.add('scrolled');
+  }
+  function closeMenu() {
+    document.getElementById('nav-links').classList.remove('open');
+    siteNav.classList.remove('menu-open');
+  }
+
+  /* Ensure hero video plays on load */
+  window.addEventListener('load', () => {
+    const v = document.querySelector('.hero-video');
+    if (v) v.play().catch(() => {});
+  });
+
+  /* Scroll reveal */
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  revealEls.forEach(el => revealObs.observe(el));
+
+  /* FAQ accordion */
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  /* Contact form submission */
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = contactForm.querySelector('.cf-submit');
+      const origText = btn.textContent;
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
+
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new FormData(contactForm)
+        });
+
+        if (res.ok) {
+          contactForm.style.display = 'none';
+          document.getElementById('cfSuccess').style.display = 'block';
+        } else {
+          throw new Error('error');
+        }
+      } catch {
+        btn.textContent = origText;
+        btn.disabled = false;
+        alert('Something went wrong — please try again or email stephanie@magnetsmaven.com directly.');
+      }
+    });
+  }
+
+  /* Smooth scrolling for anchor links */
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', e => {
+      const target = document.querySelector(link.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        const offset = 80;
+        window.scrollTo({ top: target.offsetTop - offset, behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+
+<!-- ══ TRANSLATIONS ══════════════════════════════════════════ -->
+<script>
+const translations = {
+  en: {
+    nav_bio: "Biomagnetism", nav_services: "Services", nav_expect: "What to Expect",
+    nav_about: "About", nav_faq: "FAQ", nav_testimonials: "Testimonials", nav_book: "Book a Session",
+    test_label: "Client Stories", test_h2: "Words from Our Clients",
+    test_featured_q: "I came in curious and left feeling lighter than I had in months. Stephanie creates such a calm, safe space — I didn't want to leave.",
+    test_featured_cite: "— María L. &nbsp;·&nbsp; Miami, FL",
+    test_cta_p: "Had a session with Stephanie? Your words help others find their way.",
+    test_cta_btn: "Share Your Experience",
+    hero_eyebrow: "Balance · Heal · Realign",
+    hero_h1: "Restoring Harmony Within the Body<br>to Support Deep and Natural Healing.",
+    hero_sub: "Biomagnetism is a gentle yet powerful therapy that uses magnets to support your body's natural ability to heal.",
+    btn_book: "Book a Session", btn_learn: "Learn More", scroll: "Scroll",
+    intro_label: "Welcome",
+    intro_h2: "A Space for Stillness<br>and Gentle Renewal",
+    intro_p1: "Magnets Maven offers biomagnetic therapy sessions in a calm, intentional setting — designed for those seeking a thoughtful complement to their wellness routine. Each session is personal, unhurried, and crafted around your comfort.",
+    intro_p2: "Whether you are new to biomagnetism or simply curious, you are warmly welcomed here.",
+    pillar1_h4: "Gentle &amp; Non-Invasive", pillar1_p: "Clients rest fully clothed throughout the session",
+    pillar2_h4: "60–75 Minutes", pillar2_p: "Unhurried sessions in a quiet, peaceful space",
+    pillar3_h4: "Personalized Care", pillar3_p: "Every session tailored individually to you",
+    wi_label: "The Practice", wi_h2: "What is<br>Biomagnetism?",
+    wi_p1: "Biomagnetism is a simple, gentle, yet powerful therapy that detects imbalances in the body due to germs, toxins, or emotions. The practitioner places medium-sized magnets on specific points of the body using different polarities to clear these germs, toxins, imbalances, or emotions.",
+    wi_p2: "By applying magnetic pairs to specific points on the body, we help restore your natural pH. When the pH is balanced (neutral) your body starts to heal naturally.",
+    wi_p3: "",
+    wi_disc: "Biomagnetism is a complementary practice and is not intended to diagnose, treat, cure, or prevent any medical condition. Please consult your healthcare provider for any health concerns.",
+    exp_label: "Your Journey", exp_h2: "Before Your Session",
+    step1_h3: "Before Your Session", step1_p: "Your initial session begins with a comprehensive review and analysis of your current goals. The practitioner identifies imbalances in your body.",
+    step2_h3: "During the Session", step2_p: "During the session, the practitioner places magnets on specific points while you rest, fully clothed, on a massage table. The magnets typically remain in place for about 20 minutes.",
+    step3_h3: "After the Session", step3_p: "Take your time returning to the moment. We encourage you to hydrate well, rest if possible, and give yourself a quiet evening.",
+    about_label: "The Person Behind the Practice", about_h2: "Guided by Intuition,<br>Driven by Balance",
+    about_p1: "Hello and welcome! My name is Stephanie Bassaler, and my journey into the world of Biomagnetism didn't begin with a personal medical crisis or a dramatic cure. It began with something far more quiet, yet incredibly powerful: pure curiosity and a deep fascination with natural medicine.",
+    about_p2: "For years, I found myself drawn to holistic traditions. When I first discovered Biomagnetism, something deeply resonated within me. It wasn't just an interest; it was a calling.",
+    about_p3: "Exploring this profound therapy awakened my intuition in a way I had never experienced before. It gave me the clarity to trust my inner guidance and the courage to step into my purpose, believe in myself, and begin practicing.",
+    about_p4: "My Philosophy",
+    about_p5: "I believe that the body knows exactly how to heal when given the right environment. My role as a practitioner isn't to \"fix\" you, but to listen to your body's unique energetic language. By using biomagnetic pairs to restore balance and clear blockages — whether physical, toxic, or emotional — we create the space for your body's natural intelligence to take over.",
+    srv_label: "What We Offer", srv_h2: "Sessions &amp; Services",
+    srv_desc: "Every session is tailored to the individual — whether you are seeking relaxation, recovery, or simply a moment of calm.",
+    srv_card1_label: "60–75 min", srv_card1_h3: "Adult Biomagnetism Session",
+    srv_card2_label: "45–60 min", srv_card2_h3: "Children Biomagnetism Session",
+    srv_card3_label: "30–45 min · Virtual", srv_card3_h3: "Pet Virtual Biomagnetism Session",
+    srv_card4_label: "60 min · Online", srv_card4_h3: "Virtual Adult Biomagnetism Session",
+    srv_card5_label: "45–60 min · Online", srv_card5_h3: "Virtual Children Biomagnetism Session",
+    btn_book_session: "Book This Session",
+    cf_label: "Get in Touch", cf_h2: "Send a Message",
+    cf_desc: "Have a question or ready to book? Fill out the form and Stephanie will get back to you within 24 hours.",
+    cf_name_label: "Full Name", cf_name_ph: "Your name",
+    cf_email_label: "Email Address",
+    cf_phone_label: "Phone (optional)", cf_phone_ph: "+1 (305) 000-0000",
+    cf_service_label: "Interested In", cf_service_default: "Select a session type…",
+    cf_service_adult_ip: "Adult In-Person ($180)", cf_service_child_ip: "Children In-Person ($120)",
+    cf_service_pet: "Pet Virtual ($120)", cf_service_adult_v: "Adult Virtual ($180)",
+    cf_service_child_v: "Children Virtual ($120)", cf_service_unsure: "Not sure yet",
+    cf_msg_label: "Message", cf_msg_ph: "Tell Stephanie a little about what brought you here…",
+    cf_submit: "Send Message",
+    cf_note: "We typically respond within 24 hours. For faster replies, message via WhatsApp.",
+    cf_success: "Thank you — your message has been sent. Stephanie will be in touch soon.",
+    faq_label: "Common Questions", faq_h2: "Frequently Asked Questions",
+    faq1_q: "What should I wear?", faq1_a: "Comfortable, loose-fitting clothing is ideal — something you can rest in easily. You remain fully clothed throughout the entire session, so there is no need to change or undress.",
+    faq2_q: "Is the session painful?", faq2_a: "No. Biomagnetic therapy is a gentle, non-invasive practice. Magnets are placed on the body with care — there is no pressure, manipulation, or discomfort involved. Most clients find the experience deeply relaxing.",
+    faq3_q: "How long does a session last?", faq3_a: "Sessions typically last between 60 and 75 minutes. The introductory session may take a little longer, as it includes a brief intake conversation so we can get to know your needs before we begin.",
+    faq4_q: "Is biomagnetism a replacement for medical care?", faq4_a: "No. Biomagnetism is a complementary wellness practice and should not be used as a substitute for professional medical advice, diagnosis, or treatment. If you have a health concern, please consult your doctor or healthcare provider. Biomagnetic therapy is intended to complement — not replace — conventional care.",
+    faq5_q: "Can I book if I am pregnant, have a pacemaker, or have implanted medical devices?", faq5_a: "If you are pregnant, have a pacemaker, or have any implanted medical devices (such as cochlear implants or insulin pumps), please reach out before booking. We ask that you share this information so we can discuss whether a session is appropriate for you. Your safety is always the priority.",
+    faq6_q: "What should I expect after the session?", faq6_a: "Many clients feel a sense of calm and lightness after a session. We recommend drinking plenty of water, resting if you feel the need to, and allowing yourself a gentle, easy evening. Some people notice a shift over the following day or two — simply be attentive to how your body responds.",
+    contact_label: "Get in Touch", contact_h2: "Let's Connect",
+    contact_email_label: "Email", contact_phone_label: "Phone",
+    contact_loc_label: "Location", contact_ig_label: "Instagram",
+    footer_tagline: "Biomagnetic Therapy by Stephanie Bassaler",
+    footer_disc: "Biomagnetic therapy is a complementary wellness practice and is not a substitute for medical advice, diagnosis, or treatment. Always consult a qualified healthcare provider regarding any health concerns.",
+    footer_copy: "2026 Magnets Maven"
+  },
+  es: {
+    nav_bio: "Biomagnetismo", nav_services: "Servicios", nav_expect: "Qué Esperar",
+    nav_about: "Sobre Mí", nav_faq: "FAQ", nav_testimonials: "Testimonios", nav_book: "Reservar Sesión",
+    test_label: "Historias de Clientes", test_h2: "Lo Que Dicen Nuestros Clientes",
+    test_featured_q: "Llegué curiosa y me fui sintiéndome más liviana de lo que había estado en meses. Stephanie crea un espacio tan tranquilo y seguro — no quería irme.",
+    test_featured_cite: "— María L. &nbsp;·&nbsp; Miami, FL",
+    test_cta_p: "¿Tuviste una sesión con Stephanie? Tus palabras ayudan a otros a encontrar su camino.",
+    test_cta_btn: "Comparte Tu Experiencia",
+    hero_eyebrow: "Equilibrio · Sanar · Realinear",
+    hero_h1: "Restaurando la Armonía en el Cuerpo<br>para Apoyar una Sanación Profunda y Natural.",
+    hero_sub: "El biomagnetismo es una terapia suave pero poderosa que usa imanes para apoyar la capacidad natural de tu cuerpo de sanar.",
+    btn_book: "Reservar Sesión", btn_learn: "Saber Más", scroll: "Desplazar",
+    intro_label: "Bienvenida",
+    intro_h2: "Un Espacio de Calma<br>y Renovación Suave",
+    intro_p1: "Magnets Maven ofrece sesiones de terapia biomagnética en un ambiente tranquilo e intencional — diseñadas para quienes buscan un complemento reflexivo a su rutina de bienestar. Cada sesión es personal, sin prisa, y adaptada a tu comodidad.",
+    intro_p2: "Ya sea que seas nueva en el biomagnetismo o simplemente tengas curiosidad, aquí eres bienvenida con calidez.",
+    pillar1_h4: "Suave y No Invasiva", pillar1_p: "Los clientes descansan completamente vestidos durante la sesión",
+    pillar2_h4: "60–75 Minutos", pillar2_p: "Sesiones tranquilas en un espacio sereno y pacífico",
+    pillar3_h4: "Atención Personalizada", pillar3_p: "Cada sesión diseñada individualmente para ti",
+    wi_label: "La Práctica", wi_h2: "¿Qué es el<br>Biomagnetismo?",
+    wi_p1: "El biomagnetismo es una terapia simple, suave y poderosa que detecta desequilibrios en el cuerpo causados por gérmenes, toxinas o emociones. El practicante coloca imanes de tamaño mediano en puntos específicos del cuerpo usando diferentes polaridades para eliminar estos gérmenes, toxinas, desequilibrios o emociones.",
+    wi_p2: "Al aplicar pares magnéticos en puntos específicos del cuerpo, ayudamos a restaurar tu pH natural. Cuando el pH está equilibrado (neutro), tu cuerpo comienza a sanar de forma natural.",
+    wi_p3: "",
+    wi_disc: "El biomagnetismo es una práctica complementaria y no está destinado a diagnosticar, tratar, curar o prevenir ninguna condición médica. Consulta a tu proveedor de salud ante cualquier preocupación médica.",
+    exp_label: "Tu Experiencia", exp_h2: "Antes de Tu Sesión",
+    step1_h3: "Antes de Tu Sesión", step1_p: "Tu sesión inicial comienza con una revisión y análisis completo de tus objetivos actuales.",
+    step2_h3: "Durante la Sesión", step2_p: "Durante la sesión, el practicante identifica desequilibrios en tu cuerpo y coloca imanes en puntos específicos mientras descansas, completamente vestida, en una cómoda camilla de masajes. Los imanes generalmente permanecen en su lugar durante aproximadamente 20 minutos.",
+    step3_h3: "Después de la Sesión", step3_p: "Tómate tu tiempo para volver al momento. Te animamos a hidratarte bien, descansar si es posible, y darte una noche tranquila.",
+    about_label: "La Persona Detrás de la Práctica", about_h2: "Guiada por la Intuición,<br>Impulsada por el Equilibrio",
+    about_p1: "¡Hola y bienvenida! Mi nombre es Stephanie Bassaler, y mi camino hacia el mundo del Biomagnetismo no comenzó con una crisis médica personal ni una cura dramática. Comenzó con algo mucho más silencioso, pero increíblemente poderoso: pura curiosidad y una profunda fascinación por la medicina natural.",
+    about_p2: "Durante años, me sentí atraída por las tradiciones holísticas. Cuando descubrí el Biomagnetismo por primera vez, algo resonó profundamente en mí. No era solo un interés; era un llamado.",
+    about_p3: "Explorar esta profunda terapia despertó mi intuición de una manera que nunca había experimentado antes. Me dio la claridad para confiar en mi guía interior y el coraje para abrazar mi propósito, creer en mí misma y comenzar a practicar.",
+    about_p4: "Mi Filosofía",
+    about_p5: "Creo que el cuerpo sabe exactamente cómo sanar cuando se le da el entorno adecuado. Mi rol como practicante no es \"arreglarte\", sino escuchar el lenguaje energético único de tu cuerpo. Al usar pares biomagnéticos para restaurar el equilibrio y eliminar bloqueos — ya sean físicos, tóxicos o emocionales — creamos el espacio para que la inteligencia natural de tu cuerpo tome el control.",
+    srv_label: "Lo Que Ofrecemos", srv_h2: "Sesiones y Servicios",
+    srv_desc: "Cada sesión está adaptada al individuo — ya sea que busques relajación, recuperación o simplemente un momento de calma.",
+    srv_card1_label: "60–75 min", srv_card1_h3: "Sesión Biomagnética para Adultos",
+    srv_card2_label: "45–60 min", srv_card2_h3: "Sesión Biomagnética para Niños",
+    srv_card3_label: "30–45 min · Virtual", srv_card3_h3: "Sesión Biomagnética Virtual para Mascotas",
+    srv_card4_label: "60 min · Online", srv_card4_h3: "Sesión Biomagnética Virtual para Adultos",
+    srv_card5_label: "45–60 min · Online", srv_card5_h3: "Sesión Biomagnética Virtual para Niños",
+    btn_book_session: "Reservar Esta Sesión",
+    cf_label: "Contáctanos", cf_h2: "Envía un Mensaje",
+    cf_desc: "¿Tienes preguntas o estás lista para reservar? Llena el formulario y Stephanie te responderá en menos de 24 horas.",
+    cf_name_label: "Nombre Completo", cf_name_ph: "Tu nombre",
+    cf_email_label: "Correo Electrónico",
+    cf_phone_label: "Teléfono (opcional)", cf_phone_ph: "+1 (305) 000-0000",
+    cf_service_label: "Me Interesa", cf_service_default: "Selecciona el tipo de sesión…",
+    cf_service_adult_ip: "Adultos Presencial ($180)", cf_service_child_ip: "Niños Presencial ($120)",
+    cf_service_pet: "Mascotas Virtual ($120)", cf_service_adult_v: "Adultos Virtual ($180)",
+    cf_service_child_v: "Niños Virtual ($120)", cf_service_unsure: "No estoy segura aún",
+    cf_msg_label: "Mensaje", cf_msg_ph: "Cuéntale a Stephanie un poco sobre lo que te trajo aquí…",
+    cf_submit: "Enviar Mensaje",
+    cf_note: "Generalmente respondemos en menos de 24 horas. Para respuestas más rápidas, escribe por WhatsApp.",
+    cf_success: "Gracias — tu mensaje ha sido enviado. Stephanie se pondrá en contacto pronto.",
+    faq_label: "Preguntas Frecuentes", faq_h2: "Preguntas Frecuentes",
+    faq1_q: "¿Qué debo usar?", faq1_a: "Se recomienda ropa cómoda y holgada — algo en lo que puedas descansar fácilmente. Permaneces completamente vestida durante toda la sesión, por lo que no es necesario cambiarse ni desvestirse.",
+    faq2_q: "¿La sesión es dolorosa?", faq2_a: "No. La terapia biomagnética es una práctica suave y no invasiva. Los imanes se colocan en el cuerpo con cuidado — no hay presión, manipulación ni incomodidad. La mayoría de los clientes encuentran la experiencia profundamente relajante.",
+    faq3_q: "¿Cuánto dura una sesión?", faq3_a: "Las sesiones suelen durar entre 60 y 75 minutos. La sesión introductoria puede tomar un poco más de tiempo, ya que incluye una breve conversación inicial para conocer tus necesidades antes de comenzar.",
+    faq4_q: "¿El biomagnetismo reemplaza la atención médica?", faq4_a: "No. El biomagnetismo es una práctica de bienestar complementaria y no debe usarse como sustituto del consejo médico profesional, diagnóstico o tratamiento. Si tienes alguna preocupación de salud, consulta a tu médico. La terapia biomagnética está destinada a complementar — no reemplazar — la atención convencional.",
+    faq5_q: "¿Puedo reservar si estoy embarazada, tengo marcapasos o dispositivos médicos implantados?", faq5_a: "Si estás embarazada, tienes marcapasos o cualquier dispositivo médico implantado (como implantes cocleares o bombas de insulina), por favor contáctanos antes de reservar. Tu seguridad siempre es la prioridad.",
+    faq6_q: "¿Qué debo esperar después de la sesión?", faq6_a: "Muchos clientes sienten una sensación de calma y ligereza después de una sesión. Recomendamos beber abundante agua, descansar si sientes la necesidad, y darte una noche suave y tranquila. Algunas personas notan un cambio durante el día o dos siguientes — simplemente presta atención a cómo responde tu cuerpo.",
+    contact_label: "Contáctanos", contact_h2: "Conectemos",
+    contact_email_label: "Correo", contact_phone_label: "Teléfono",
+    contact_loc_label: "Ubicación", contact_ig_label: "Instagram",
+    footer_tagline: "Terapia Biomagnética por Stephanie Bassaler",
+    footer_disc: "La terapia biomagnética es una práctica de bienestar complementaria y no sustituye el consejo médico, diagnóstico o tratamiento. Siempre consulta a un profesional de la salud calificado.",
+    footer_copy: "2026 Magnets Maven"
+  }
+};
+
+function setLang(lang) {
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (translations[lang] && translations[lang][key]) {
+      el.innerHTML = translations[lang][key];
+    }
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    if (translations[lang] && translations[lang][key]) {
+      el.placeholder = translations[lang][key];
+    }
+  });
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+  document.documentElement.lang = lang;
+  localStorage.setItem('lang', lang);
+}
+
+// On load, apply saved language
+document.addEventListener('DOMContentLoaded', () => {
+  const saved = localStorage.getItem('lang') || 'en';
+  setLang(saved);
+});
+
+// ── Review form submission ────────────────────────────────
+const reviewForm = document.getElementById('reviewForm');
+if (reviewForm) {
+  reviewForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const data = new FormData(reviewForm);
+    const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: data });
+    if (res.ok) {
+      reviewForm.reset();
+      document.getElementById('reviewSuccess').style.display = 'block';
+    }
+  });
+}
+
+// ── Rotating testimonial in services grid ─────────────────
+(function() {
+  const testimonials = [
+    { quote: "I had never tried biomagnetism before and wasn't sure what to expect. Stephanie made me feel completely at ease from the moment I walked in. The session was deeply relaxing — I fell asleep on the table!", name: "Andrea M.", detail: "Adult Session · Coral Gables" },
+    { quote: "I brought my 8-year-old daughter who has been struggling with sleep. After two sessions with Stephanie, she is sleeping so much better. Stephanie was incredibly patient and gentle with her.", name: "Carolina R.", detail: "Children's Session · Miami" },
+    { quote: "The virtual session for my cat was something I was skeptical about, but honestly the results surprised me. Stephanie walked me through everything clearly. Will definitely book again.", name: "Lorena V.", detail: "Pet Virtual Session · Online" },
+    { quote: "Stephanie has a very calming presence. The space at Lipé House is beautiful and peaceful. I left my first session feeling like I had just had the best nap of my life.", name: "Sofía P.", detail: "Adult Session · Coral Gables" },
+    { quote: "I did the virtual adult session from my home in Bogotá. I was a bit nervous about how it would work remotely, but Stephanie guided me through everything. Truly a beautiful experience.", name: "Marcela T.", detail: "Virtual Adult Session · Online" },
+    { quote: "What I appreciated most was that Stephanie never rushed. She answered all my questions, explained everything clearly, and made me feel genuinely cared for. I will be back.", name: "Isabella F.", detail: "Adult Session · Miami Beach" },
+  ];
+
+  const inner = document.getElementById('srvTInner');
+  const quoteEl = document.getElementById('srvTQuote');
+  const nameEl = document.getElementById('srvTName');
+  const detailEl = document.getElementById('srvTDetail');
+  const dotsEl = document.getElementById('srvTDots');
+
+  if (!inner) return;
+
+  // Build dots
+  testimonials.forEach((_, i) => {
+    const d = document.createElement('span');
+    d.className = 'srv-t-dot' + (i === 0 ? ' active' : '');
+    dotsEl.appendChild(d);
+  });
+
+  let current = 0;
+
+  function showTestimonial(index) {
+    inner.classList.add('fading');
+    setTimeout(() => {
+      const t = testimonials[index];
+      quoteEl.textContent = '“' + t.quote + '”';
+      nameEl.textContent = t.name;
+      detailEl.textContent = t.detail;
+      dotsEl.querySelectorAll('.srv-t-dot').forEach((d, i) => {
+        d.classList.toggle('active', i === index);
+      });
+      inner.classList.remove('fading');
+    }, 600);
+  }
+
+  setInterval(() => {
+    current = (current + 1) % testimonials.length;
+    showTestimonial(current);
+  }, 12000);
+})();
+</script>
+
+</body>
+</html>

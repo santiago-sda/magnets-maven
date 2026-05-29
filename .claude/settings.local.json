@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//Users/santi/Library/Application Support/Claude/local-agent-mode-sessions/skills-plugin/a0aaff67-f8e8-4314-9c5a-ab605b1c5fd5/fcbab6f1-924a-4042-880a-ac8366d2b413/skills/docx/**)",
+      "Bash(extract-text \"/Users/santi/Desktop/Stephanie New Doc.docx\")",
+      "Bash(pandoc \"/Users/santi/Desktop/Stephanie New Doc.docx\" -t plain)",
+      "Read(//private/tmp/**)",
+      "Bash(cp \"/Users/santi/Desktop/Stephanie New Doc.docx\" stephanie.docx)",
+      "Bash(unzip -o stephanie.docx word/document.xml -d docx_out)",
+      "Bash(python3 -c ' *)"
+    ]
+  }
+}

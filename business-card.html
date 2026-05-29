@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Magnets Maven — Business Card</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream:      #F5EEE3;
+      --cream-dark: #EAE0D0;
+      --beige:      #D4C4B0;
+      --sage:       #7A8C68;
+      --teal:       #4f6d73;
+      --teal-dark:  #3a5258;
+      --charcoal:   #1e3538;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans:  'Jost', sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--sans);
+      background: #e0e0e0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      min-height: 100vh; gap: 2.5rem; padding: 3rem;
+    }
+
+    .label {
+      font-family: var(--sans); font-size: 0.7rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: #888; margin-bottom: 0.6rem;
+    }
+
+    /* ── CARD BASE ── */
+    .card {
+      width: 3.5in; height: 2in;
+      position: relative; overflow: hidden;
+      border-radius: 2px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    }
+
+    /* ══════════════════════════════════════════
+       FRONT
+    ══════════════════════════════════════════ */
+    .card-front {
+      background: var(--cream);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 0.55rem;
+    }
+
+    /* Teal top bar */
+    .card-front::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 5px; background: var(--teal);
+    }
+
+    /* Corner ornaments */
+    .corner {
+      position: absolute; width: 18px; height: 18px;
+      pointer-events: none;
+    }
+    .corner-tl { top: 10px; left: 10px; border-top: 1px solid var(--sage); border-left: 1px solid var(--sage); }
+    .corner-tr { top: 10px; right: 10px; border-top: 1px solid var(--sage); border-right: 1px solid var(--sage); }
+    .corner-bl { bottom: 10px; left: 10px; border-bottom: 1px solid var(--sage); border-left: 1px solid var(--sage); }
+    .corner-br { bottom: 10px; right: 10px; border-bottom: 1px solid var(--sage); border-right: 1px solid var(--sage); }
+
+    .front-logo {
+      height: 52px; width: auto;
+    }
+
+    .front-divider {
+      width: 36px; height: 1px; background: var(--sage); margin: 0.1rem 0;
+    }
+
+    .front-tagline {
+      font-family: var(--sans); font-size: 6.5pt;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--teal); text-align: center;
+    }
+
+    /* ══════════════════════════════════════════
+       BACK
+    ══════════════════════════════════════════ */
+    .card-back {
+      background: var(--charcoal);
+      display: flex; align-items: center;
+    }
+
+    /* Teal left stripe */
+    .card-back::before {
+      content: '';
+      position: absolute; top: 0; left: 0; bottom: 0;
+      width: 5px; background: var(--teal);
+    }
+
+    .back-inner {
+      padding: 0 0.32in; width: 100%;
+    }
+
+    .back-name {
+      font-family: var(--serif); font-size: 17pt;
+      font-style: italic; font-weight: 300;
+      color: #fff; letter-spacing: 0.01em;
+      margin-bottom: 0.18rem;
+    }
+
+    .back-title {
+      font-family: var(--sans); font-size: 6pt;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--teal); margin-bottom: 0.28rem;
+    }
+
+    .back-rule {
+      width: 28px; height: 1px;
+      background: var(--sage); margin-bottom: 0.28rem;
+    }
+
+    .back-details {
+      display: flex; flex-direction: column; gap: 0.13rem;
+    }
+
+    .back-detail {
+      font-family: var(--sans); font-size: 6.5pt;
+      font-weight: 300; color: rgba(255,255,255,0.65);
+      letter-spacing: 0.04em;
+    }
+
+    .back-detail span {
+      color: rgba(255,255,255,0.35); margin-right: 0.3em;
+    }
+
+    /* ── PRINT ── */
+    @media print {
+      body { background: none; padding: 0; gap: 0; }
+      .label { display: none; }
+      .card { box-shadow: none; }
+      .card-front { page-break-after: always; }
+      @page { size: 3.5in 2in; margin: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- FRONT -->
+  <p class="label">Front</p>
+  <div class="card card-front">
+    <div class="corner corner-tl"></div>
+    <div class="corner corner-tr"></div>
+    <div class="corner corner-bl"></div>
+    <div class="corner corner-br"></div>
+    <img src="Logo_2.png" alt="Magnets Maven" class="front-logo" />
+    <div class="front-divider"></div>
+    <p class="front-tagline">Biomagnetic Therapy &nbsp;·&nbsp; Coral Gables</p>
+  </div>
+
+  <!-- BACK -->
+  <p class="label">Back</p>
+  <div class="card card-back">
+    <div class="back-inner">
+      <p class="back-name">Stephanie Bassaler</p>
+      <p class="back-title">Certified Biomagnetic Therapist</p>
+      <div class="back-rule"></div>
+      <div class="back-details">
+        <p class="back-detail"><span>✦</span> stephanie@magnetsmaven.com</p>
+        <p class="back-detail"><span>✦</span> +1 (305) 904-7727</p>
+        <p class="back-detail"><span>✦</span> magnetsmaven.com</p>
+        <p class="back-detail"><span>✦</span> Lipé House of Wellness, Coral Gables FL</p>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

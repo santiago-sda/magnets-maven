@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Client Stories — Magnets Maven</title>
+  <meta name="description" content="Read what clients say about their biomagnetic therapy experience with Stephanie Bassaler at Magnets Maven in Coral Gables, Miami." />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream:         #F5EEE3;
+      --cream-dark:    #EAE0D0;
+      --beige:         #D4C4B0;
+      --sage:          #7A8C68;
+      --sage-light:    #A9BA95;
+      --burgundy:      #4f6d73;
+      --burgundy-dark: #3a5258;
+      --charcoal:      #1e3538;
+      --black:         #131f20;
+      --warm-white:    #FDFAF2;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans:  'Jost', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--cream);
+      color: #444;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 3rem;
+      background: var(--warm-white);
+      border-bottom: 1px solid var(--cream-dark);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+    }
+    .nav-logo-wrap { position: relative; height: 70px; width: 220px; }
+    .nav-logo img { height: 70px; width: auto; position: absolute; top: 0; left: 0; }
+    .logo-light { opacity: 0; }
+    .logo-dark  { opacity: 1; }
+    .nav-back {
+      font-family: var(--sans); font-size: 0.72rem;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--burgundy); text-decoration: none;
+      display: flex; align-items: center; gap: 0.5rem;
+      transition: color 0.3s;
+    }
+    .nav-back:hover { color: var(--burgundy-dark); }
+    .nav-back svg { width: 14px; height: 14px; }
+
+    /* ── HERO ── */
+    .t-hero {
+      padding: 11rem 2rem 6rem;
+      text-align: center;
+      background: var(--charcoal);
+      position: relative; overflow: hidden;
+    }
+    .t-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at center, rgba(79,109,115,0.15) 0%, transparent 70%);
+    }
+    .t-hero .section-label {
+      font-family: var(--sans); font-size: 0.65rem;
+      letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--sage-light); display: block; margin-bottom: 1.2rem;
+    }
+    .t-hero h1 {
+      font-family: var(--serif); font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-style: italic; font-weight: 300;
+      color: #fff; line-height: 1.2; margin-bottom: 1.2rem;
+    }
+    .t-hero p {
+      color: rgba(255,255,255,0.6); font-size: 0.95rem;
+      max-width: 500px; margin: 0 auto;
+    }
+    .t-hero-divider {
+      width: 48px; height: 1px;
+      background: var(--sage); margin: 1.4rem auto;
+    }
+
+    /* ── CONTAINER ── */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+    .container-narrow { max-width: 760px; margin: 0 auto; padding: 0 2rem; }
+
+    /* ── SECTION LABEL ── */
+    .section-label {
+      font-family: var(--sans); font-size: 0.62rem;
+      letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--sage); display: block; margin-bottom: 0.8rem;
+    }
+    .divider {
+      width: 48px; height: 1px;
+      background: var(--beige); margin: 0 auto 2.5rem;
+    }
+
+    /* ── FEATURED QUOTE ── */
+    .featured-quote {
+      padding: 6rem 2rem;
+      background: var(--warm-white);
+      text-align: center;
+    }
+    .quote-mark {
+      font-family: var(--serif); font-size: 6rem;
+      color: var(--beige); line-height: 0.5;
+      margin-bottom: 1.5rem; display: block;
+    }
+    .featured-quote blockquote {
+      font-family: var(--serif); font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+      font-style: italic; font-weight: 300;
+      color: var(--charcoal); line-height: 1.6;
+      max-width: 780px; margin: 0 auto 2rem;
+    }
+    .featured-quote cite {
+      font-family: var(--sans); font-size: 0.78rem;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--burgundy); font-style: normal;
+    }
+
+    /* ── TESTIMONIALS GRID ── */
+    .testimonials-section {
+      padding: 6rem 2rem;
+      background: var(--cream);
+    }
+    .testimonials-section .section-label { text-align: center; }
+    .testimonials-section .divider { margin: 0 auto 3.5rem; }
+    .t-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      max-width: 1100px; margin: 0 auto;
+    }
+    .t-card {
+      background: var(--warm-white);
+      border: 1px solid var(--cream-dark);
+      border-radius: 2px;
+      padding: 2.2rem;
+      display: flex; flex-direction: column; gap: 1.2rem;
+      transition: box-shadow 0.3s ease;
+    }
+    .t-card:hover {
+      box-shadow: 0 8px 32px rgba(0,0,0,0.07);
+    }
+    .t-stars {
+      display: flex; gap: 3px;
+    }
+    .t-stars svg {
+      width: 14px; height: 14px; fill: #C9A84C; stroke: none;
+    }
+    .t-card blockquote {
+      font-family: var(--serif); font-size: 1.08rem;
+      font-style: italic; font-weight: 300;
+      color: #333; line-height: 1.75; flex: 1;
+    }
+    .t-card-footer {
+      display: flex; align-items: center; gap: 0.9rem;
+      border-top: 1px solid var(--cream-dark);
+      padding-top: 1.1rem;
+    }
+    .t-avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--cream-dark);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--serif); font-size: 1rem;
+      font-style: italic; color: var(--burgundy);
+      flex-shrink: 0;
+    }
+    .t-name {
+      font-family: var(--sans); font-size: 0.78rem;
+      font-weight: 500; letter-spacing: 0.06em;
+      color: var(--charcoal);
+    }
+    .t-detail {
+      font-family: var(--sans); font-size: 0.68rem;
+      letter-spacing: 0.08em; color: #999;
+    }
+
+    /* ── COMING SOON STATE ── */
+    .coming-soon-note {
+      text-align: center; padding: 3rem 2rem 1rem;
+      font-size: 0.82rem; color: #aaa;
+      letter-spacing: 0.06em;
+      font-style: italic;
+    }
+
+    /* ── LEAVE A REVIEW CTA ── */
+    .leave-review {
+      padding: 6rem 2rem;
+      background: var(--charcoal);
+      text-align: center;
+    }
+    .leave-review .section-label { color: var(--sage-light); }
+    .leave-review h2 {
+      font-family: var(--serif); font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-style: italic; font-weight: 300;
+      color: #fff; margin-bottom: 1rem;
+    }
+    .leave-review p {
+      color: rgba(255,255,255,0.55); font-size: 0.9rem;
+      max-width: 440px; margin: 0 auto 2.5rem;
+    }
+    .leave-review .divider { background: var(--sage); }
+    .btn-primary {
+      display: inline-block; padding: 0.95rem 2.5rem;
+      background: var(--burgundy); color: #fff;
+      font-family: var(--sans); font-size: 0.74rem;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      text-decoration: none; border-radius: 2px;
+      transition: background 0.3s ease;
+    }
+    .btn-primary:hover { background: var(--burgundy-dark); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--black);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    .footer-logo {
+      font-family: var(--serif); font-size: 1.4rem;
+      font-style: italic; color: rgba(255,255,255,0.5);
+      margin-bottom: 0.5rem;
+    }
+    .footer-copy {
+      font-size: 0.68rem; color: rgba(255,255,255,0.2);
+      letter-spacing: 0.1em; margin-top: 1rem;
+    }
+    .footer-back {
+      display: inline-block; margin-top: 1rem;
+      font-size: 0.7rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--sage);
+      text-decoration: none;
+    }
+    .footer-back:hover { color: var(--sage-light); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .t-grid { grid-template-columns: repeat(2, 1fr); }
+      nav { padding: 1rem 1.5rem; }
+    }
+    @media (max-width: 600px) {
+      .t-grid { grid-template-columns: 1fr; }
+      .t-hero { padding: 9rem 1.5rem 5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-wrap">
+      <img src="Logo_1.png" alt="Magnets Maven" class="logo-light" />
+      <img src="Logo_2.png" alt="Magnets Maven" class="logo-dark" />
+    </div>
+  </a>
+  <a href="index.html" class="nav-back">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <path d="M19 12H5M12 5l-7 7 7 7"/>
+    </svg>
+    Back to Home
+  </a>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="t-hero">
+  <span class="section-label">Client Stories</span>
+  <h1>Words from Our Clients</h1>
+  <div class="t-hero-divider"></div>
+  <p>Every session is a step toward balance. Here is what clients share about their experience with Magnets Maven.</p>
+</section>
+
+<!-- ── FEATURED QUOTE ── -->
+<section class="featured-quote">
+  <span class="quote-mark">"</span>
+  <blockquote>
+    I came in curious and left feeling lighter than I had in months. Stephanie creates such a calm, safe space — I didn't want to leave.
+  </blockquote>
+  <cite>— María L. &nbsp;·&nbsp; Miami, FL</cite>
+</section>
+
+<!-- ── TESTIMONIALS GRID ── -->
+<section class="testimonials-section">
+  <span class="section-label">What They Say</span>
+  <div class="divider"></div>
+
+  <div class="t-grid">
+
+    <div class="t-card">
+      <div class="t-stars">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <blockquote>"I had never tried biomagnetism before and wasn't sure what to expect. Stephanie made me feel completely at ease from the moment I walked in. The session was deeply relaxing — I fell asleep on the table!"</blockquote>
+      <div class="t-card-footer">
+        <div class="t-avatar">A</div>
+        <div>
+          <p class="t-name">Andrea M.</p>
+          <p class="t-detail">Adult Session · Coral Gables</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="t-card">
+      <div class="t-stars">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <blockquote>"I brought my 8-year-old daughter who has been struggling with sleep. After two sessions with Stephanie, she is sleeping so much better. Stephanie was incredibly patient and gentle with her."</blockquote>
+      <div class="t-card-footer">
+        <div class="t-avatar">C</div>
+        <div>
+          <p class="t-name">Carolina R.</p>
+          <p class="t-detail">Children's Session · Miami</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="t-card">
+      <div class="t-stars">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <blockquote>"The virtual session for my cat was something I was skeptical about, but honestly the results surprised me. Stephanie walked me through everything clearly. Will definitely book again."</blockquote>
+      <div class="t-card-footer">
+        <div class="t-avatar">L</div>
+        <div>
+          <p class="t-name">Lorena V.</p>
+          <p class="t-detail">Pet Virtual Session · Online</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="t-card">
+      <div class="t-stars">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <blockquote>"Stephanie has a very calming presence. The space at Lipé House is beautiful and peaceful. I left my first session feeling like I had just had the best nap of my life."</blockquote>
+      <div class="t-card-footer">
+        <div class="t-avatar">S</div>
+        <div>
+          <p class="t-name">Sofía P.</p>
+          <p class="t-detail">Adult Session · Coral Gables</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="t-card">
+      <div class="t-stars">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <blockquote>"I did the virtual adult session from my home in Bogotá. I was a bit nervous about how it would work remotely, but Stephanie guided me through everything. Truly a beautiful experience."</blockquote>
+      <div class="t-card-footer">
+        <div class="t-avatar">M</div>
+        <div>
+          <p class="t-name">Marcela T.</p>
+          <p class="t-detail">Virtual Adult Session · Online</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="t-card">
+      <div class="t-stars">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <blockquote>"What I appreciated most was that Stephanie never rushed. She answered all my questions, explained everything clearly, and made me feel genuinely cared for. I will be back."</blockquote>
+      <div class="t-card-footer">
+        <div class="t-avatar">I</div>
+        <div>
+          <p class="t-name">Isabella F.</p>
+          <p class="t-detail">Adult Session · Miami Beach</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <p class="coming-soon-note">⟡ &nbsp; More client stories coming soon &nbsp; ⟡</p>
+
+</section>
+
+<!-- ── LEAVE A REVIEW CTA ── -->
+<section class="leave-review">
+  <span class="section-label">Share Your Experience</span>
+  <div class="divider"></div>
+  <h2>Had a Session with Stephanie?</h2>
+  <p>Your words mean the world — and help others find their way to a moment of calm.</p>
+  <a href="https://wa.me/13059047727?text=Hi%20Stephanie!%20I%20would%20like%20to%20share%20my%20experience%20with%20Magnets%20Maven." target="_blank" rel="noopener" class="btn-primary">Leave a Review via WhatsApp</a>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-logo">Magnets Maven</div>
+  <p class="footer-copy">© 2025 Magnets Maven. All rights reserved.</p>
+  <a href="index.html" class="footer-back">← Return to main site</a>
+</footer>
+
+</body>
+</html>
