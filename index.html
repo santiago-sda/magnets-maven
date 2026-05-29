@@ -1031,7 +1031,7 @@
 
 <!-- ══ HERO ════════════════════════════════════════════════ -->
 <section class="hero" id="home">
-  <video class="hero-video" autoplay muted loop playsinline poster="ChatGPT Image May 11, 2026, 01_59_00 PM.png">
+  <video class="hero-video" autoplay muted loop playsinline poster="StephanieB2025-5.jpg">
     <source src="VIDEO.mp4" type="video/mp4" />
   </video>
   <div class="hero-bg"></div>
@@ -1685,11 +1685,17 @@
     siteNav.classList.remove('menu-open');
   }
 
-  /* Ensure hero video plays on load */
-  window.addEventListener('load', () => {
-    const v = document.querySelector('.hero-video');
-    if (v) v.play().catch(() => {});
-  });
+  /* Ensure hero video plays on load — aggressive mobile support */
+  const heroVid = document.querySelector('.hero-video');
+  if (heroVid) {
+    const tryPlay = () => heroVid.play().catch(() => {});
+    tryPlay();
+    document.addEventListener('DOMContentLoaded', tryPlay);
+    window.addEventListener('load', tryPlay);
+    /* iOS requires a user gesture on some devices — play on first touch */
+    document.addEventListener('touchstart', tryPlay, { once: true });
+    document.addEventListener('click', tryPlay, { once: true });
+  }
 
   /* Scroll reveal */
   const revealEls = document.querySelectorAll('.reveal');
